@@ -94,7 +94,7 @@ const MapClient = () => {
           type: 'FeatureCollection',
           features: valid.map(country => ({
             type: 'Feature',
-            properties: { ...country, color: country.is_affected ? '#BA6D58' : '#164E63' },
+            properties: { ...country, color: country.is_affected ? '#BA6D58' : '#386c80ff' },
             geometry: country.geometry!,
           })),
         };
@@ -134,7 +134,7 @@ const MapClient = () => {
           type: 'FeatureCollection',
           features: valid.map(region=> ({
             type: 'Feature',
-            properties: { ...region, color: region.is_affected ? '#0E0202' : '#164E63' },
+            properties: { ...region, color: region.is_affected ? '#0E0202' : '#386c80ff' },
             geometry: region.geometry!,
           })),
         };
