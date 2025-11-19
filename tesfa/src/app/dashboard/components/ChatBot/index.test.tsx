@@ -20,42 +20,41 @@ describe('ChatWidget', () => {
     });
   });
 
-  test('should send a message and display bot response', async () => {
-    submitQueryMock.mockResolvedValueOnce({ response: 'Bot response' });
+ test('should send a message and display bot response', async () => {
+  submitQueryMock.mockResolvedValueOnce({ response: 'Bot response' });
 
-    render(<ChatWidget />);
-    fireEvent.click(screen.getByLabelText(/open chat/i));
+  render(<ChatWidget />);
 
-    const input = screen.getByLabelText(/chat input/i);
-    const sendButton = screen.getByLabelText(/send message/i);
+  const input = screen.getByLabelText(/chat input/i);
+  const sendButton = screen.getByLabelText(/send message/i);
 
-    fireEvent.change(input, { target: { value: 'Hello' } });
-    expect(sendButton).not.toBeDisabled();
+  fireEvent.change(input, { target: { value: 'Hello' } });
+  expect(sendButton).not.toBeDisabled();
 
-    fireEvent.click(sendButton);
+  fireEvent.click(sendButton);
 
-    const dots = await screen.findAllByText('.', { selector: '.dot' });
-    expect(dots.length).toBeGreaterThan(0);
-    const responseText = await screen.findByText('Bot response');
-    expect(responseText).toBeInTheDocument();
-  });
+  const dots = await screen.findAllByText('.', { selector: '.dot' });
+  expect(dots.length).toBeGreaterThan(0);
 
-  test('should handle submitQuery failure gracefully', async () => {
-    submitQueryMock.mockRejectedValueOnce(new Error('Failed to load response'));
+  const responseText = await screen.findByText('Bot response');
+  expect(responseText).toBeInTheDocument();
+});
 
-    render(<ChatWidget />);
-    fireEvent.click(screen.getByLabelText(/open chat/i));
+test('should handle submitQuery failure gracefully', async () => {
+  submitQueryMock.mockRejectedValueOnce(new Error('Failed to load response'));
 
-    const input = screen.getByLabelText(/chat input/i);
-    const sendButton = screen.getByLabelText(/send message/i);
+  render(<ChatWidget />);
 
-    fireEvent.change(input, { target: { value: 'Hi' } });
-    fireEvent.click(sendButton);
+  const input = screen.getByLabelText(/chat input/i);
+  const sendButton = screen.getByLabelText(/send message/i);
 
-    const dots = await screen.findAllByText('.', { selector: '.dot' });
-    expect(dots.length).toBeGreaterThan(0);
+  fireEvent.change(input, { target: { value: 'Hi' } });
+  fireEvent.click(sendButton);
 
-    const errorText = await screen.findByText('Failed to load response');
-    expect(errorText).toBeInTheDocument();
-  });
+  const dots = await screen.findAllByText('.', { selector: '.dot' });
+  expect(dots.length).toBeGreaterThan(0);
+
+  const errorText = await screen.findByText('Failed to load response');
+  expect(errorText).toBeInTheDocument();
+});
 });
