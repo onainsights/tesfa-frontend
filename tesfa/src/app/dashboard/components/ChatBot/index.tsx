@@ -45,7 +45,7 @@ function BouncingDots() {
 export default function ChatWidget() {
   const { submitQuery } = useQueryLog();
   const [input, setInput] = useState<string>("");
-  const [open, setOpen] = useState<boolean>(false);
+  const [open, setOpen] = useState<boolean>(true);
   const [sending, setSending] = useState<boolean>(false);
   const [localLogs, setLocalLogs] = useState<Message[]>([]);
   const [greeted, setGreeted] = useState<boolean>(false);

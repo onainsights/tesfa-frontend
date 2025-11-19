@@ -5,6 +5,7 @@ import dynamic from 'next/dynamic';
 import Layout from '../sharedComponents/Layout';
 import ChatWidget from './components/ChatBot';
 import ProtectedRoute from '../sharedComponents/ProtectedRoot';
+import MapLegend from './components/legend';
 const MapClient = dynamic(() => import('./components/Map'), {
   ssr: false,
   loading: () => <div className="p-4">Loading map...</div>,
@@ -47,6 +48,7 @@ const DashboardPage = () => {
           <main className="flex-1 relative">
             <MapClient />
             <ChatWidget />
+            <MapLegend/>
           </main>
         </div>
       </Layout>
