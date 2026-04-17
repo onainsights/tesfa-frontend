@@ -80,6 +80,8 @@ export interface DiseaseRisk {
   disease_name?: string;
   risk_level?: string;
   risk_percent?: number;
+  risk_score?: number;
+  recommendations?: any[];
 }
 
 export interface Prediction {

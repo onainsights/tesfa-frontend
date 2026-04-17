@@ -8,17 +8,21 @@ import { useCountries } from '../../../hooks/useCountries';
 import { useRegions } from '../../../hooks/useRegions';
 import { usePredictions } from '../../../hooks/usePrediction';
 import useWorldLand from '../../../hooks/useWorldLand';
+
 const applyStyle = (layer: Layer, opacity: number) => {
   if ((layer as Path).setStyle) {
     (layer as Path).setStyle({ fillOpacity: opacity });
   }
 };
+
 function isCountry(properties: Country | Region): properties is Country {
   return (properties as Country).country_id !== undefined;
 }
+
 function isRegion(properties: Country | Region): properties is Region {
   return (properties as Region).region_id !== undefined;
 }
+
 const MapClient = () => {
   const mapRef = useRef<HTMLDivElement>(null);
   const leafletMapRef = useRef<L.Map | null>(null);
@@ -34,6 +38,7 @@ const MapClient = () => {
   const { predictions } = usePredictions();
   const { worldLand } = useWorldLand();
   const showLoaderOverlay = loadingC;
+
   useEffect(() => {
     if (!mapRef.current || leafletMapRef.current) return;
     const map = L.map(mapRef.current, {
@@ -43,12 +48,27 @@ const MapClient = () => {
       maxZoom: 12,
       zoomControl: false,
     });
+
+    // Create three panes with explicit z-indexes so layer order is always correct:
+    // worldLandPane (200) → behind everything
+    // countriesPane  (300) → above world land
+    // regionsPane    (400) → above countries
+    map.createPane('worldLandPane');
+    map.getPane('worldLandPane')!.style.zIndex = '200';
+
+    map.createPane('countriesPane');
+    map.getPane('countriesPane')!.style.zIndex = '300';
+
+    map.createPane('regionsPane');
+    map.getPane('regionsPane')!.style.zIndex = '400';
+
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     }).addTo(map);
     L.control.zoom({ position: 'bottomright' }).addTo(map);
     map.setMaxBounds([[-85, -180], [85, 180]]);
     leafletMapRef.current = map;
+
     const handleZoom = () => {
       const zoom = map.getZoom();
       const regionsLayer = geoJsonLayersRef.current.regions;
@@ -59,18 +79,21 @@ const MapClient = () => {
       }
     };
     map.on('zoomend', handleZoom);
+
     return () => {
       map.off('zoomend', handleZoom);
       map.remove();
       leafletMapRef.current = null;
     };
   }, []);
+
   useEffect(() => {
     if (!worldLand || !leafletMapRef.current) return;
     if (geoJsonLayersRef.current.worldLand) {
       leafletMapRef.current.removeLayer(geoJsonLayersRef.current.worldLand);
     }
     const layer = L.geoJSON(worldLand, {
+      pane: 'worldLandPane',
       style: { fillColor: '#00353D', fillOpacity: 1, weight: 0, color: 'transparent' },
       onEachFeature: (_, layer) => {
         if (layer instanceof L.Path) {
@@ -81,6 +104,7 @@ const MapClient = () => {
     }).addTo(leafletMapRef.current);
     geoJsonLayersRef.current.worldLand = layer;
   }, [worldLand]);
+
   useEffect(() => {
     if (!leafletMapRef.current) return;
     if (geoJsonLayersRef.current.countries) {
@@ -99,6 +123,7 @@ const MapClient = () => {
           })),
         };
         const layer = L.geoJSON(fc, {
+          pane: 'countriesPane',
           style: f => ({
             fillColor: f?.properties?.color || '#0F4C75',
             weight: 0.5,
@@ -116,11 +141,12 @@ const MapClient = () => {
               applyStyle(l, 0.8);
             });
           },
-        }).addTo(leafletMapRef.current);
+        }).addTo(leafletMapRef.current!);
         geoJsonLayersRef.current.countries = layer;
       }
     }
   }, [countries]);
+
   useEffect(() => {
     if (!leafletMapRef.current) return;
     if (geoJsonLayersRef.current.regions) {
@@ -132,13 +158,14 @@ const MapClient = () => {
       if (valid.length > 0) {
         const fc: MapFeatureCollection = {
           type: 'FeatureCollection',
-          features: valid.map(region=> ({
+          features: valid.map(region => ({
             type: 'Feature',
             properties: { ...region, color: region.is_affected ? '#0E0202' : '#386c80ff' },
             geometry: region.geometry!,
           })),
         };
         const layer = L.geoJSON(fc, {
+          pane: 'regionsPane',
           style: f => ({
             fillColor: f?.properties?.color || '#00353D',
             weight: 0.3,
@@ -164,13 +191,15 @@ const MapClient = () => {
       }
     }
   }, [regions]);
+
   const getPredictionInfo = () => {
     if (!hoveredFeature) return null;
     const p = hoveredFeature.properties;
-    if (isCountry(p)) return predictions.find(predictions => predictions.country === p.country_id);
-    if (isRegion(p)) return predictions.find(predictions => predictions.region === p.region_id);
+    if (isCountry(p)) return predictions.find(pred => pred.country === p.country_id);
+    if (isRegion(p)) return predictions.find(pred => pred.region === p.region_id);
     return null;
   };
+
   return (
     <div className="relative w-full h-full overflow-hidden">
       <div
@@ -207,19 +236,25 @@ const MapClient = () => {
                       <p>No health risks in this area.</p>
                     ) : (
                       <table className="mt-2 text-xs border-collapse border border-gray-400 w-full">
-                        <thead><tr className="bg-gray-200">
-                          <th className="border px-1">Disease</th>
-                          <th className="border px-1">Risk Level</th>
-                          <th className="border px-1">Risk %</th>
-                        </tr></thead>
+                        <thead>
+                          <tr className="bg-gray-200">
+                            <th className="border px-1">Disease</th>
+                            <th className="border px-1">Risk Level</th>
+                            <th className="border px-1">Risk %</th>
+                          </tr>
+                        </thead>
                         <tbody>
                           {risks.map((item, i) => (
                             typeof item === 'object' && item ? (
                               <tr key={i} className="even:bg-gray-100">
-                                <td className="border px-1">{item.disease_name || 'Unknown'}</td>
-                                <td className="border px-1">{item.risk_level || 'Unknown'}</td>
+                                <td className="border px-1">{(item as DiseaseRisk).disease_name || 'Unknown'}</td>
+                                <td className="border px-1">{(item as DiseaseRisk).risk_level || 'Unknown'}</td>
                                 <td className="border px-1 text-right">
-                                  {typeof item.risk_percent === 'number' ? `${item.risk_percent}%` : 'N/A'}
+                                  {typeof (item as DiseaseRisk).risk_score === 'number'
+                                    ? `${(item as DiseaseRisk).risk_score}%`
+                                    : typeof (item as DiseaseRisk).risk_percent === 'number'
+                                    ? `${(item as DiseaseRisk).risk_percent}%`
+                                    : 'N/A'}
                                 </td>
                               </tr>
                             ) : (
@@ -237,7 +272,10 @@ const MapClient = () => {
               if (!risks || risks.length === 0) return <p>No health risks in this area.</p>;
               return risks.map((item, i) =>
                 typeof item === 'object' && item ? (
-                  <p key={i}><strong>{item.disease_name || ''}:</strong> {item.risk_level || 'Unknown'}</p>
+                  <p key={i}>
+                    <strong>{(item as DiseaseRisk).disease_name || ''}:</strong>{' '}
+                    {(item as DiseaseRisk).risk_level || 'Unknown'}
+                  </p>
                 ) : (
                   <p key={i}>{String(item)}</p>
                 )
