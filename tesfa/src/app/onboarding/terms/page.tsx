@@ -84,7 +84,7 @@ export default function TermsPage() {
             <p>
               For any questions, feedback, or data-related requests, contact at:
               <br />
-              <a href="mailto:tesfaakirachix@gmail.com" className="font-medium">tesfaakirachix@gmail.com</a>
+              <a href="mailto:tesfa@onainsights.io" className="font-medium">tesfa@onainsights.io</a>
 
               <br />
               Nairobi, Kenya
