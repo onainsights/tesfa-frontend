@@ -40,7 +40,7 @@ export default function RegisterForm({
   }, [resolvedParams]);
 
   const validateOrganization = (orgName: string) => {
-    const regex = /^(?=.*[a-zA-Z])[a-zA-Z0-9]+$/;
+    const regex = /^(?=.*[a-zA-Z])[a-zA-Z0-9\s]+$/;
     return regex.test(orgName);
   };
 
