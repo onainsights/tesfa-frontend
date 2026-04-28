@@ -110,7 +110,7 @@ export default function TasksDetails() {
 return (
     <div className="p-4 sm:p-6 md:p-8 lg:px-10 lg:py-25">
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
-        <h1 className="text-3xl sm:text-4xl font-semibold text-[#00353D]">
+        <h1 className="text-3xl sm:text-4xl font-semibold text-[#2BBCB2]">
           Tasks
         </h1>
         <div className="relative w-full sm:w-auto mt-0 sm:mt-0">
@@ -138,7 +138,7 @@ return (
           {!isAddMode && (
             <Button
               onClick={handleClick}
-              className="bg-[#1E4A47] hover:bg-[#2A5E5A] text-white px-4 sm:px-6 py-2 rounded-full cursor-pointer w-full sm:w-auto"
+              className="bg-[#2BBCB2] hover:bg-[#1AA99F] text-white px-4 sm:px-6 py-2 rounded-full cursor-pointer w-full sm:w-auto"
            
             >
               Select Tasks
@@ -266,7 +266,7 @@ return (
             <Button
               onClick={handleAddTasks}
               disabled={selectedTasks.size === 0}
-              className="bg-[#1E4A47] hover:bg-[#2A5E5A] text-white px-4 sm:px-6 py-2 rounded-full disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer w-full sm:w-auto"
+              className="bg-[#2BBCB2] hover:bg-[#1AA99F] text-white px-4 sm:px-6 py-2 rounded-full disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer w-full sm:w-auto"
             >
               Add ({selectedTasks.size}) to my tasks
             </Button>

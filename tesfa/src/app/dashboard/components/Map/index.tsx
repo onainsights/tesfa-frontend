@@ -167,7 +167,7 @@ const MapClient = () => {
         const layer = L.geoJSON(fc, {
           pane: 'regionsPane',
           style: f => ({
-            fillColor: f?.properties?.color || '#00353D',
+            fillColor: f?.properties?.color || '#0F4C75',
             weight: 0.3,
             color: '#fff',
             fillOpacity: 0.6,

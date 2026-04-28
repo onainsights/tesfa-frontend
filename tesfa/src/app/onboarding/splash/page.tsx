@@ -26,15 +26,15 @@ export default function SplashScreen() {
         className="mb-26 w-48 md:w-100 h-auto object-contain"
       />
      
-      <p className="text-xl md:text-5xl font-medium text-[#00353D] leading-relaxed italic">
+      <p className="text-xl md:text-5xl font-medium text-[#2BBCB2] leading-relaxed italic">
         The essence of{" "}
-        <span className="font-semibold text-[#CDA12B]">hope</span> and{" "}
-        <span className="font-semibold text-[#CDA12B]">renewal</span> after
+        <span className="font-semibold text-[#F5A623]">hope</span> and{" "}
+        <span className="font-semibold text-[#F5A623]">renewal</span> after
         hardship
       </p>
      
       <div className="mt-8 w-100 mx-auto">
-        <div className="h-1 w-full bg-gradient-to-r from-transparent via-[#CDA12B] to-transparent mb-10"></div>
+        <div className="h-1 w-full bg-gradient-to-r from-transparent via-[#F5A623] to-transparent mb-10"></div>
       </div>
     </div>
   );

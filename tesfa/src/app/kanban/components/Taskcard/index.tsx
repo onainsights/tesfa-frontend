@@ -32,18 +32,18 @@ export function TaskCard({ task, index, onDelete }: TaskCardProps) {
   };
 
 
-  const getCardColor = (status: string) => {
+ const getCardColor = (status: string) => {
     switch (status) {
       case 'tasks':
-        return 'bg-[#266A74]'
+        return 'bg-[#2BBCB2]'
       case 'pending':
-        return 'bg-[#013840]'
+        return 'bg-[#2BBCB2]'
       case 'in-progress':
-        return 'bg-[#266A74]'
+        return 'bg-[#2BBCB2]'
       case 'completed':
-        return 'bg-[#013840]'
+        return 'bg-[#2BBCB2]'
       default:
-        return 'bg-[#4a7c79]'
+        return 'bg-[#2BBCB2]'
     }
   };
 

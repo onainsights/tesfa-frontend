@@ -120,16 +120,16 @@ export default function RegisterForm({
 
   return (
     <div className="md:w-1/2 text-left max-w-md">
-      <h2 className="text-xl md:text-5xl font-semibold text-[#CDA12B] mb-6 relative inline-block">
+      <h2 className="text-xl md:text-5xl font-semibold text-[#F5A623] mb-6 relative inline-block">
         Create Account
-        <span className="absolute left-0 -bottom-1 w-full h-[2px] bg-gradient-to-r from-transparent via-[#CDA12B] to-transparent"></span>
+        <span className="absolute left-0 -bottom-1 w-full h-[2px] bg-gradient-to-r from-transparent via-[#F5A623] to-transparent"></span>
       </h2>
 
       <form onSubmit={handleSubmit} className="space-y-5 mt-12 text-black">
         <div>
           <label
             htmlFor="organization"
-            className="block text-2xl font-light text-[#00353D] mb-1"
+            className="block text-2xl font-light text-[#2BBCB2] mb-1"
           >
             Organization name
           </label>
@@ -140,7 +140,7 @@ export default function RegisterForm({
             placeholder="Enter organization name"
             value={formData.organization}
             onChange={handleChange}
-            className="w-full p-3 border border-gray-300 rounded-xl text-[#00353D] focus:ring-2 focus:ring-[#CDA12B] focus:border-transparent transition"
+            className="w-full p-3 border border-gray-300 rounded-xl text-black focus:ring-2 focus:ring-[#F5A623] focus:border-transparent transition"
             required
           />
           {organizationError && (
@@ -153,7 +153,7 @@ export default function RegisterForm({
         <div>
           <label
             htmlFor="email"
-            className="block text-2xl font-light text-[#00353D] mb-1"
+            className="block text-2xl font-light text-[#2BBCB2] mb-1"
           >
             Email
           </label>
@@ -164,7 +164,7 @@ export default function RegisterForm({
             placeholder="Enter your Email"
             value={formData.email}
             onChange={handleChange}
-            className="w-full p-3 border border-gray-300 rounded-xl text-[#00353D] focus:ring-2 focus:ring-[#CDA12B] focus:border-transparent transition"
+            className="w-full p-3 border border-gray-300 rounded-xl text-black focus:ring-2 focus:ring-[#F5A623] focus:border-transparent transition"
             required
           />
         </div>
@@ -172,7 +172,7 @@ export default function RegisterForm({
         <div className="relative">
           <label
             htmlFor="password"
-            className="block text-2xl font-light text-[#00353D] mb-1"
+            className="block text-2xl font-light text-[#2BBCB2] mb-1"
           >
             Password
           </label>
@@ -183,7 +183,7 @@ export default function RegisterForm({
             placeholder="Enter Password"
             value={formData.password}
             onChange={handleChange}
-            className="w-full p-3 border border-gray-300 rounded-xl text-[#00353D] focus:ring-2 focus:ring-[#CDA12B] focus:border-transparent transition pr-12"
+            className="w-full p-3 border border-gray-300 rounded-xl text-black focus:ring-2 focus:ring-[#F5A623] focus:border-transparent transition pr-12"
             required
           />
           <button
@@ -191,7 +191,7 @@ export default function RegisterForm({
             onClick={() =>
               setShowPassword((prev) => ({ ...prev, password: !prev.password }))
             }
-            className="absolute cursor-pointer right-3 top-12 text-[#00353D] text-xl"
+            className="absolute cursor-pointer right-3 top-12 text-[#2BBCB2] text-xl"
             tabIndex={-1}
             aria-label={showPassword.password ? "Hide password" : "Show password"}
           >
@@ -208,7 +208,7 @@ export default function RegisterForm({
         <div className="relative">
           <label
             htmlFor="confirmPassword"
-            className="block text-2xl font-light text-[#00353D] mb-1"
+            className="block text-2xl font-light text-[#2BBCB2] mb-1"
           >
             Confirm password
           </label>
@@ -219,7 +219,7 @@ export default function RegisterForm({
             placeholder="Confirm Password"
             value={formData.confirmPassword}
             onChange={handleChange}
-            className="w-full p-3 border border-gray-300 text-[#00353D] rounded-xl focus:ring-2 focus:ring-[#CDA12B] focus:border-transparent transition pr-12"
+            className="w-full p-3 border border-gray-300 text-black rounded-xl focus:ring-2 focus:ring-[#F5A623] focus:border-transparent transition pr-12"
             required
           />
           <button
@@ -227,7 +227,7 @@ export default function RegisterForm({
             onClick={() =>
               setShowPassword((prev) => ({ ...prev, confirmPassword: !prev.confirmPassword }))
             }
-            className="absolute right-3 cursor-pointer top-12 text-[#00353D] text-xl"
+            className="absolute right-3 cursor-pointer top-12 text-[#2BBCB2] text-xl"
             tabIndex={-1}
             aria-label={
               showPassword.confirmPassword ? "Hide confirm password" : "Show confirm password"
@@ -249,12 +249,12 @@ export default function RegisterForm({
             id="terms"
             checked={termsAccepted}
             onChange={(e) => setTermsAccepted(e.target.checked)}
-            className="mt-1 h-5 w-5 text-[#CDA12B] cursor-pointer rounded focus:ring-[#CDA12B]"
+            className="mt-1 h-5 w-5 text-[#F5A623] cursor-pointer rounded focus:ring-[#F5A623]"
             required
           />
-          <label htmlFor="terms" className="ml-2 cursor-pointer  text-[#00353D] text-lg">
+          <label htmlFor="terms" className="ml-2 cursor-pointer  text-[#2BBCB2] text-lg">
             I agree to the{" "}
-            <Link href="/onboarding/terms" className="text-[#CDA12B] hover:underline">
+            <Link href="/onboarding/terms" className="text-[#F5A623] hover:underline">
               Terms and Conditions.
             </Link>
           </label>
@@ -263,16 +263,16 @@ export default function RegisterForm({
         <button
           type="submit"
           disabled={loading}
-          className="w-full bg-[#00353D] text-white font-extrabold py-3 rounded-xl hover:bg-[#00695C] transition-colors duration-200 shadow-sm hover:shadow-md transform hover:-translate-y-1 mt-5 cursor-pointer"
+          className="w-full bg-[#2BBCB2] text-white font-extrabold py-3 rounded-xl hover:bg-[#00695C] transition-colors duration-200 shadow-sm hover:shadow-md transform hover:-translate-y-1 mt-5 cursor-pointer"
         >
           {loading ? "Signing up..." : "Sign up"}
         </button>
 
         {error && <p className="text-red-500 text-sm text-center mt-2">{error}</p>}
 
-        <p className="text-[#00353D] text-center text-xl mt-4 font-extralight">
+        <p className="text-[#2BBCB2] text-center text-xl mt-4 font-extralight">
           Do you have an account?{" "}
-          <Link href="/onboarding/login" className="text-[#CDA12B] font-extrabold hover:underline">
+          <Link href="/onboarding/login" className="text-[#F5A623] font-extrabold hover:underline">
             Sign In
           </Link>
         </p>

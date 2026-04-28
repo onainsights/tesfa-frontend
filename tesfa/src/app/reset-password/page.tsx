@@ -20,7 +20,7 @@ export default function ForgotPasswordPage() {
       <div className="absolute top-10 left-10 w-15">
         <Image src="/Images/Tlogo.png" alt="Logo" width={60} height={60} />
       </div>
-      <div className="bg-[#00353D] p-8 rounded-xl shadow-lg w-100 text-center relative">
+      <div className="bg-[#2BBCB2] p-8 rounded-xl shadow-lg w-100 text-center relative">
         <div className="absolute -bottom-105 -right-165 w-100 h-100 rounded-full border-[10px] border-[#011d1f]  opacity-40"></div>
         <div className="absolute -bottom-130 -right-190 w-150 h-150 rounded-full border-[100px] border-[#05393a]  opacity-40"></div>
         <div className="absolute -bottom-130 -right-190 w-150 h-150 rounded-full border-[10px] border-[#011d1f]  opacity-40"></div>

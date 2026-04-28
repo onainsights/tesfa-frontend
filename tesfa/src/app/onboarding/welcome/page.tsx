@@ -26,18 +26,18 @@ export default function WelcomeScreen() {
 
         
         <div className="text-left max-w-md">
-          <h1 className="text-4xl md:text-7xl font-normal text-[#CDA12B] mb-15 relative text-center">
+          <h1 className="text-4xl md:text-7xl font-normal text-[#F5A623] mb-15 relative text-center">
             Welcome
-            <span className="absolute left-0 -bottom-1 w-full h-[3px] bg-gradient-to-r from-transparent via-[#CDA12B] to-transparent"></span>
+            <span className="absolute left-0 -bottom-1 w-full h-[3px] bg-gradient-to-r from-transparent via-[#F5A623] to-transparent"></span>
           </h1>
 
-          <p className="text-[#00353D] font-light md:text-4xl leading-relaxed mb-8 text-center">
+          <p className="text-[#2BBCB2] font-light md:text-4xl leading-relaxed mb-8 text-center">
             By restoring health and safety, we help bring happiness and brighter futures to those who need it most.
           </p>
 
           <button
             onClick={() => router.push("/onboarding/register")}
-            className="w-full bg-[#00353D] text-white text-base md:text-2xl cursor-pointer font-extrabold px-8 py-3 rounded-md hover:bg-teal-800 transition-all duration-200 shadow-sm hover:shadow-md transform hover:-translate-y-1"
+            className="w-full bg-[#2BBCB2] text-white text-base md:text-2xl cursor-pointer font-extrabold px-8 py-3 rounded-md hover:bg-teal-800 transition-all duration-200 shadow-sm hover:shadow-md transform hover:-translate-y-1"
           >
             Get Started
           </button>

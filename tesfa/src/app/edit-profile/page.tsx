@@ -114,7 +114,7 @@ export default function EditProfilePage() {
           )}
 
           <div className="w-full px-4 sm:px-8 lg:px-16 xl:py-25 py-10">
-            <h1 className="text-3xl sm:text-4xl font-medium text-[#00353D] mb-2">
+            <h1 className="text-3xl sm:text-4xl font-medium text-[#2BBCB2] mb-2">
               Edit Profile
             </h1>
             <div className="w-full h-[6px] bg-[#8BB2B5] rounded" />
@@ -198,7 +198,7 @@ export default function EditProfilePage() {
                 <div className="flex flex-col gap-2">
                   <label
                     htmlFor="email"
-                    className="text-xl text-[#00353D] font-medium"
+                    className="text-xl text-[#2BBCB2] font-medium"
                   >
                     Email
                   </label>
@@ -215,7 +215,7 @@ export default function EditProfilePage() {
                   />
                 </div>
                 <div className="flex flex-col gap-2">
-                  <label className="text-xl text-[#00353D] font-medium">
+                  <label className="text-xl text-[#2BBCB2] font-medium">
                     Change Password
                   </label>
                   <div className="relative">
@@ -231,7 +231,7 @@ export default function EditProfilePage() {
                     <button
                       type="button"
                       onClick={() => setShowPassword(!showPassword)}
-                      className="absolute right-4 top-1/2 cursor-pointer transform -translate-y-1/2 text-[#C3A041] hover:text-[#00353D]"
+                      className="absolute right-4 top-1/2 cursor-pointer transform -translate-y-1/2 text-[#C3A041] hover:text-[#2BBCB2]"
                       aria-label={
                         showPassword ? "Hide password" : "Show password"
                       }

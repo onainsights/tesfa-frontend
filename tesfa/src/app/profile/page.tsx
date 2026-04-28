@@ -31,14 +31,14 @@ export default function ProfilePage() {
     <Layout>
       <div className="flex flex-col w-full items-center bg-[#FCF6F7] h-screen overflow-y-auto">
         <div className="w-full px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 mt-8 xl:mt-25 mb-12">
-          <h1 className="text-3xl sm:text-4xl font-medium text-[#00353D] mb-2">
+          <h1 className="text-3xl sm:text-4xl font-medium text-[#2BBCB2] mb-2">
             Profile
           </h1>
           <div className="w-full h-[6px] bg-[#8BB2B5] rounded" />
         </div>
 
         <div className="flex flex-col lg:flex-row items-start w-full max-w-7xl mt-20 gap-10 px-4 sm:px-6 md:px-8 lg:px-10 pb-20">
-          <div className="w-full lg:w-1/2 bg-[#00363E] rounded-3xl shadow-lg">
+          <div className="w-full lg:w-1/2 bg-[#2BBCB2] rounded-3xl shadow-lg">
             <div className="relative flex flex-col items-center p-22 ">
       
               {error && (
@@ -99,10 +99,10 @@ export default function ProfilePage() {
                   <div className="flex flex-col sm:flex-row items-start mt-25 sm:items-center gap-3 w-full">
                     <UserIcon className="w-7 h-7 text-[#C3A041]" />
                     <div className="flex flex-col sm:flex-row sm:items-center sm:gap-5">
-                      <p className="text-lg sm:text-xl text-[#00353D] font-medium">
+                      <p className="text-lg sm:text-xl text-[#2BBCB2] font-medium">
                         Organization name:
                       </p>
-                      <p className="text-lg sm:text-xl text-[#00353D] font-medium break-words">
+                      <p className="text-lg sm:text-xl text-[#2BBCB2] font-medium break-words">
                         {profile.org_name}
                       </p>
                     </div>
@@ -111,10 +111,10 @@ export default function ProfilePage() {
                   <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 w-full">
                     <Mail className="w-7 h-7 text-[#C3A041]" />
                     <div className="flex flex-col sm:flex-row sm:items-center sm:gap-36">
-                      <p className="text-lg sm:text-xl text-[#00353D] font-medium">
+                      <p className="text-lg sm:text-xl text-[#2BBCB2] font-medium">
                         Email:
                       </p>
-                      <p className="text-lg sm:text-xl text-[#00353D] font-medium break-words">
+                      <p className="text-lg sm:text-xl text-[#2BBCB2] font-medium break-words">
                         {profile.email}
                       </p>
                     </div>
@@ -122,10 +122,10 @@ export default function ProfilePage() {
                   <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 w-full">
                     <Calendar className="w-7 h-7 text-[#C3A041]" />
                     <div className="flex flex-col sm:flex-row sm:items-center sm:gap-9">
-                      <p className="text-lg sm:text-xl text-[#00353D] font-medium">
+                      <p className="text-lg sm:text-xl text-[#2BBCB2] font-medium">
                         Registration Date:
                       </p>
-                      <p className="text-lg sm:text-xl text-[#00353D] font-medium">
+                      <p className="text-lg sm:text-xl text-[#2BBCB2] font-medium">
                         {formatDate(profile.created_at)}
                       </p>
                     </div>
@@ -133,10 +133,10 @@ export default function ProfilePage() {
                   <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 w-full">
                     <ShieldCheck className="w-7 h-7 text-[#C3A041]" />
                     <div className="flex flex-col sm:flex-row sm:items-center sm:gap-11">
-                      <p className="text-lg sm:text-xl text-[#00353D] font-medium">
+                      <p className="text-lg sm:text-xl text-[#2BBCB2] font-medium">
                         Tasks Completed:
                       </p>
-                      <p className="text-lg sm:text-xl text-[#00353D] font-medium">
+                      <p className="text-lg sm:text-xl text-[#2BBCB2] font-medium">
                         {completedTasks.length}/{totalTasks} Tasks
                       </p>
                     </div>

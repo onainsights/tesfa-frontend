@@ -141,7 +141,7 @@ export default function ChatWidget() {
       {!open && (
         <button
           onClick={() => setOpen(true)}
-          className="w-16 cursor-pointer h-16 rounded-full bg-cyan-900 flex items-center justify-center text-white shadow-lg"
+          className="w-16 cursor-pointer h-16 rounded-full bg-[#2BBCB2] flex items-center justify-center text-white shadow-lg"
           aria-label="Open chat"
         >
           <MessageCircle size={32} />
@@ -151,7 +151,7 @@ export default function ChatWidget() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="w-[420px] h-[540px] bg-cyan-900 shadow-lg rounded-2xl flex flex-col relative"
+          className="w-[420px] h-[540px] bg-[#2BBCB2] shadow-lg rounded-2xl flex flex-col relative"
         >
           <div className="p-4 border-b  border-white flex justify-between items-center">
             <span className="font-semibold text-lg text-white">Chat</span>
@@ -181,8 +181,8 @@ export default function ChatWidget() {
                         msg.text?.includes("Hi, I’m Tesfa")
                           ? "bg-transparent text-lg font-semibold flex flex-col items-center text-center"
                           : msg.sender === "user"
-                          ? "bg-[#0391A6]"
-                          : "bg-[#0B3E46]"
+                          ? "bg-[#1AA99F]"
+                          : "bg-[#2BBCB2]"
                       }`}
                   >
                     {msg.loading ? (

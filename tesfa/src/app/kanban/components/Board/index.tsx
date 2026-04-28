@@ -23,10 +23,10 @@ import Loader from '@/app/sharedComponents/Loader';
 
 
 const columns = [
-  { id: "pending", title: 'Tasks', color: 'bg-[#D3AC45]' },
-  { id: "in_progress", title: 'Pending', color: 'bg-[#D3AC45]' },
-  { id: 'cancelled', title: 'In progress', color: 'bg-[#D3AC45]' },
-  { id: 'completed', title: 'Completed', color: 'bg-[#D3AC45]' },
+  { id: "pending", title: 'Tasks', color: 'bg-[#F5A623]' },
+  { id: "in_progress", title: 'Pending', color: 'bg-[#F5A623]' },
+  { id: 'cancelled', title: 'In progress', color: 'bg-[#F5A623]' },
+  { id: 'completed', title: 'Completed', color: 'bg-[#F5A623]' },
 ];
 
 
@@ -131,9 +131,9 @@ export default function KanbanBoard() {
     >
       <div className="p-10 xl:px-10 xl:py-20 bg-gray-50 md:overflow-hidden relative">
         <div className="flex items-center justify-between  lg:mb-3">
-          <h1 className="text-4xl font-semibold text-[#00353D]">Task Tracking</h1>
+          <h1 className="text-4xl font-semibold text-[#2BBCB2]">Task Tracking</h1>
         </div>
-        <div className="h-1.5 bg-[#266A74] opacity-50 xl:mb-10 lg:mb-5"></div>
+        <div className="h-1.5 bg-[#2BBCB2] opacity-50 xl:mb-10 lg:mb-5"></div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-10 h-[68vh]">
           {columns.map((column) => (
             <motion.div

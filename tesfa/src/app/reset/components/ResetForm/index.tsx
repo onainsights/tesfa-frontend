@@ -47,7 +47,7 @@ export default function ResetFormClient({ uid, token }: { uid: string; token: st
 
   return (
     <div className="relative w-full max-w-sm overflow-hidden">
-      <div className="bg-[#00353D] p-10 rounded-2xl shadow-2xl ring-2 ring-teal-700/30">
+      <div className="bg-[#2BBCB2] p-10 rounded-2xl shadow-2xl ring-2 ring-teal-700/30">
         <button
           onClick={() => router.back()}
           aria-label="Go back"

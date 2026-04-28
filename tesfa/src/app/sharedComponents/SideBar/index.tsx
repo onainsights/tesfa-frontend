@@ -19,7 +19,7 @@ const SidebarItem = ({ icon, label, isOpen, active, onClick }: SidebarItemProps)
   return (
     <div
       className={`flex items-center gap-6 p-2 rounded-2xl cursor-pointer transition-colors
-      ${active ? "bg-active-gradient text-[00353D] font-semibold" : "hover:bg-teal-800"}`}
+      ${active ? "bg-active-gradient text-[00353D] font-semibold" : "hover:bg-teal-600"}`}
       onClick={onClick}
     >
       <div className="flex justify-center w-8">{icon}</div>
@@ -42,7 +42,7 @@ const LogoutConfirmModal = ({
 }) => (
   <div className="fixed inset-0 bg-black opacity-85 flex items-center justify-center z-[1000]">
     <div className="bg-blue-50 p-10 rounded-lg shadow-lg max-w-xs w-full">
-      <h2 className="text-lg font-bold mb-2 text-[#00363E]">Confirm Logout</h2>
+      <h2 className="text-lg font-bold mb-2 text-[#2BBCB2]">Confirm Logout</h2>
       <p className="mb-4 text-gray-700">Are you sure you want to logout?</p>
       <div className="flex justify-end gap-4">
         <button
@@ -110,7 +110,7 @@ const Sidebar = () => {
       <div className="lg:hidden fixed top-4 left-4 z-50">
         <button
           data-testid="mobile-open-button"
-          className="p-2 rounded-md bg-[#00363E] text-white hover:bg-teal-800 transition"
+          className="p-2 rounded-md bg-[#2BBCB2] text-white hover:bg-teal-600 transition"
           onClick={() => setIsMobileOpen(true)}
         >
           <RiSidebarFoldLine size={30} />
@@ -125,7 +125,7 @@ const Sidebar = () => {
       )}
 
       <div
-        className={`fixed inset-y-0 left-0 z-50 h-screen rounded-4xl bg-[#00363E] text-white flex flex-col justify-between transition-all duration-300
+        className={`fixed inset-y-0 left-0 z-50 h-screen rounded-4xl bg-[#2BBCB2] text-white flex flex-col justify-between transition-all duration-300
         ${isMobileOpen ? "w-60 py-6 px-4" : "w-0 p-0 overflow-hidden"} 
         lg:static lg:flex
         ${isOpen ? "lg:w-60 lg:py-6 lg:px-4" : "lg:w-16 lg:px-2 lg:py-6"}`}
@@ -134,25 +134,19 @@ const Sidebar = () => {
           <div className="flex justify-between mb-20">
             <button
               data-testid="mobile-close-button"
-              className="flex items-center justify-center w-10 h-10 rounded-md hover:bg-teal-800 transition lg:hidden"
+              className="flex items-center justify-center w-10 h-10 rounded-md hover:bg-teal-600 transition lg:hidden"
               onClick={() => setIsMobileOpen(false)}
             >
               <RiSidebarFoldLine size={30} />
             </button>
             <button
               data-testid="desktop-toggle-button"
-              className="hidden lg:flex items-center justify-center w-10 h-10 rounded-md hover:bg-teal-800 transition"
+              className="hidden lg:flex items-center justify-center w-10 h-10 rounded-md hover:bg-teal-600 transition"
               onClick={() => setIsOpen(!isOpen)}
             >
               <RiSidebarFoldLine size={30} />
             </button>
-            <div
-              className={`transition-opacity duration-300 ${isOpen || isMobileOpen ? "opacity-100" : "opacity-0"}`}
-            >
-              <div className={`${isOpen || isMobileOpen ? "" : "hidden"}`}>
-                <img src={"/Images/tesfaLogo.png"} alt="Tesfa Logo"></img>
-              </div>
-            </div>
+           
           </div>
           <nav className="flex flex-col gap-10">
             <SidebarItem

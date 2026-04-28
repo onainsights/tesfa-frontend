@@ -67,7 +67,7 @@ export default function OrganizationsPage() {
                     <input
                       type="text"
                       placeholder="Search organizations by name"
-                      className="w-full h-10 px-10 text-sm rounded-full border border-[#8BB2B5] bg-white text-[#00353D] outline-none focus:ring-2 focus:ring-[#8BB2B5] placeholder-[#00353D]/50 font-medium"
+                      className="w-full h-10 px-10 text-sm rounded-full border border-[#8BB2B5] bg-white text-[#2BBCB2] outline-none focus:ring-2 focus:ring-[#8BB2B5] placeholder-[#2BBCB2]/50 font-medium"
                       value={searchTerm}
                       onChange={(e) => setSearchTerm(e.target.value)}
                     />
@@ -85,7 +85,7 @@ export default function OrganizationsPage() {
                     onChange={(e) =>
                       setStatusFilter(e.target.value as "all" | "active" | "inactive")
                     }
-                    className="appearance-none h-10 pl-4 pr-10 cursor-pointer rounded-full border border-[#8BB2B5] bg-white text-[#00353D] outline-none focus:ring-2 focus:ring-[#8BB2B5] font-medium w-full"
+                    className="appearance-none h-10 pl-4 pr-10 cursor-pointer rounded-full border border-[#8BB2B5] bg-white text-[#2BBCB2] outline-none focus:ring-2 focus:ring-[#8BB2B5] font-medium w-full"
                   >
                     <option value="all">All</option>
                     <option value="active">Active</option>
@@ -93,7 +93,7 @@ export default function OrganizationsPage() {
                   </select>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="w-5 h-5 text-[#00353D] absolute right-4 top-1/2 transform -translate-y-1/2 pointer-events-none"
+                    className="w-5 h-5 text-[#2BBCB2] absolute right-4 top-1/2 transform -translate-y-1/2 pointer-events-none"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -104,11 +104,11 @@ export default function OrganizationsPage() {
               </div>
 
               {loading ? (
-                <div className="flex justify-center items-center my-24 text-[#00353D]">Loading...</div>
+                <div className="flex justify-center items-center my-24 text-[#2BBCB2]">Loading...</div>
               ) : error ? (
                 <div className="flex justify-center items-center text-red-500 min-h-[200px]">{error}</div>
               ) : filteredOrganizations.length === 0 ? (
-                <div className="flex justify-center text-[#00353D] items-center my-24">
+                <div className="flex justify-center text-[#2BBCB2] items-center my-24">
                   Organization not found
                 </div>
               ) : (
@@ -120,7 +120,7 @@ export default function OrganizationsPage() {
                         key={organization.id}
                         className="w-full rounded-2xl overflow-hidden bg-white flex flex-col items-center shadow-[0_4px_12px_rgba(0,0,0,0.12)]"
                       >
-                        <div className="bg-[#00353D] w-full h-16 relative flex justify-center">
+                        <div className="bg-[#2BBCB2] w-full h-16 relative flex justify-center">
                           <div
                             className="rounded-full bg-white flex items-center justify-center shadow-md"
                             style={{
@@ -146,13 +146,13 @@ export default function OrganizationsPage() {
                           </div>
                         </div>
                         <div className="flex flex-col items-center pt-10  text-center w-full">
-                          <div className="text-[20px] font-semibold text-[#00353D] mb-1 line-clamp-1">
+                          <div className="text-[20px] font-semibold text-[#2BBCB2] mb-1 line-clamp-1">
                             {organization.org_name || "-"}
                           </div>
-                          <div className="text-[#00353D] text-[15px] mb-1">
+                          <div className="text-[#2BBCB2] text-[15px] mb-1">
                             {formatDate(organization.created_at)}
                           </div>
-                          <div className="text-[#00353D] text-[14px] line-clamp-1 px-1 mb-2">
+                          <div className="text-[#2BBCB2] text-[14px] line-clamp-1 px-1 mb-2">
                             {organization.email || "-"}
                           </div>
                           <div
@@ -176,12 +176,12 @@ export default function OrganizationsPage() {
                         disabled={currentPage === 1}
                         className={`px-4 py-2 rounded-lg ${currentPage === 1
                             ? "bg-gray-200 text-gray-400 cursor-not-allowed"
-                            : "bg-[#00353D] cursor-pointer text-white hover:bg-[#002A30]"
+                            : "bg-[#2BBCB2] cursor-pointer text-white hover:bg-[#002A30]"
                           }`}
                       >
                         Previous
                       </button>
-                      <span className="text-[#00353D] font-medium">
+                      <span className="text-[#2BBCB2] font-medium">
                         Page {currentPage} of {totalPages}
                       </span>
                       <button
@@ -189,7 +189,7 @@ export default function OrganizationsPage() {
                         disabled={currentPage === totalPages}
                         className={`px-4 py-2 rounded-lg ${currentPage === totalPages
                             ? "bg-gray-200 text-gray-400 cursor-not-allowed"
-                            : "bg-[#00353D] cursor-pointer text-white hover:bg-[#002A30]"
+                            : "bg-[#2BBCB2] cursor-pointer text-white hover:bg-[#002A30]"
                           }`}
                       >
                         Next

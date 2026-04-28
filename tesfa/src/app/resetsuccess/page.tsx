@@ -12,7 +12,7 @@ const SuccessPage = () => {
             <div className="absolute -bottom-70 -right-55 w-150 h-150 rounded-full border-[100px] border-[#05393a]  opacity-40"></div>
             <div className="absolute -bottom-70 -right-55 w-150 h-150 rounded-full border-[10px] border-[#011d1f]  opacity-40"></div>
        
-      <div className="bg-[#00353D] py-15 px-15 rounded-2x shadow-white shadow-sm flex flex-col items-center space-y-6">
+      <div className="bg-[#2BBCB2] py-15 px-15 rounded-2x shadow-white shadow-sm flex flex-col items-center space-y-6">
 
       
         <div className="w-20 h-20 rounded-full bg-[#d4af37] flex items-center justify-center">
