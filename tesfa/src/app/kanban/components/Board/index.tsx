@@ -144,7 +144,7 @@ export default function KanbanBoard() {
               className="bg-[#E7EDEE] rounded-lg shadow-sm lg:overflow-hidden sm:overflow-scroll sm:h-[100vh]"
             >
               <div className={`${column.color} px-4 py-3 rounded-tl-[20px] rounded-tr-[20px]`}>
-                <h3 className="font-large text-center text-black">{column.title}</h3>
+                <h3 className="text-xl font-semibold text-center text-black">{column.title}</h3>
               </div>
               <DropZone id={column.id} className="p-4 min-h-[40vh] h-[80vh] overflow-y-scroll no-scrollbar bg-gray-100 relative">
                 <div className="space-y-3">

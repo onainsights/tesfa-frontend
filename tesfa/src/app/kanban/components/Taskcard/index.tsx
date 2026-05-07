@@ -4,7 +4,6 @@ import { useDraggable } from '@dnd-kit/core';
 import { LuTrash2 } from "react-icons/lu";
 import { TaskStatus } from '../../../utils/type';
 
-
 interface Task {
   id: string;
   title: string;
@@ -31,24 +30,27 @@ export function TaskCard({ task, index, onDelete }: TaskCardProps) {
     zIndex: isDragging ? 1 : 0,
   };
 
-
- const getCardColor = (status: string) => {
+  const getCardColor = (status: string) => {
     switch (status) {
       case 'tasks':
-        return 'bg-[#2BBCB2]'
+        return 'bg-[#FFFF]'
       case 'pending':
-        return 'bg-[#2BBCB2]'
+        return 'bg-[#FFFF]'
+      case 'in_progress':
+        return 'bg-[#FFFF]'
       case 'in-progress':
-        return 'bg-[#2BBCB2]'
+        return 'bg-[#FFFF]'
+      case 'cancelled':
+        return 'bg-[#FFFF]'
       case 'completed':
-        return 'bg-[#2BBCB2]'
+        return 'bg-[#FFFF]'
       default:
-        return 'bg-[#2BBCB2]'
+        return 'bg-[#FFFF]'
     }
   };
 
   return (
-    <> 
+    <>
     <motion.div
       ref={setNodeRef}
       style={style}
@@ -59,20 +61,20 @@ export function TaskCard({ task, index, onDelete }: TaskCardProps) {
       whileTap={{ scale: 1.05, rotate: 2 }}
       className="select-none group"
     >
-        <button 
+        <button
         onClick={() => {
           onDelete(task.id);
         }}
-        className='absolute top-2 right-2 p-1 rounded-full bg-gray-700 hover:bg-gray-800 cursor-pointer text-white opacity-0 group-hover:opacity-100 transition-opacity z-10'>
+        className='absolute top-2 right-2 p-1 rounded-full bg-gray-400 hover:bg-gray-500 cursor-pointer text-white opacity-0 group-hover:opacity-100 transition-opacity z-10'>
           <LuTrash2 size={16}/>
         </button>
-      
-      <div className={`${getCardColor(task.status)} border-none rounded-2xl h-auto text-white p-3 sm:p-4 mb-3 shadow-lg hover:shadow-xl transition-shadow w-full`}>
+
+      <div className={`${getCardColor(task.status)} border-none rounded-2xl h-auto p-3 sm:p-4 mb-3 shadow-lg hover:shadow-xl transition-shadow w-full`}>
        <div {...listeners} {...attributes} className="w-full">
         <div className="space-y-1 sm:space-y-2">
-          <h4 className="font-medium text-lg sm:text-base">{task.title}</h4>
+          <h4 className="font-semibold text-lg sm:text-xl text-black">{task.title}</h4>
           {task.description && (
-            <p className="text-xs sm:text-sm text-gray-200 opacity-90 ">{task.description}</p>
+            <p className="text-base sm:text-lg text-gray-900">{task.description}</p>
           )}
         </div>
         </div>

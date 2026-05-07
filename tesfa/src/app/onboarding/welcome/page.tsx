@@ -41,6 +41,17 @@ export default function WelcomeScreen() {
           >
             Get Started
           </button>
+
+          <div className="fixed bottom-6 left-0 right-0 flex flex-col items-center gap-1">
+            <p className="text-gray-500 text-s">A product by:</p>
+            <Image
+              src="/Images/Ona Insights Logo - black .png"
+              alt="Ona Insights"
+              width={300}
+              height={70}
+              className="opacity-80"
+            />
+          </div>
         </div>
       </div>
     </div>

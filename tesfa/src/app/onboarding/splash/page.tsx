@@ -36,6 +36,16 @@ export default function SplashScreen() {
       <div className="mt-8 w-100 mx-auto">
         <div className="h-1 w-full bg-gradient-to-r from-transparent via-[#F5A623] to-transparent mb-10"></div>
       </div>
+      <div className="fixed bottom-6 left-0 right-0 flex flex-col items-center gap-1">
+  <p className="text-gray-500 text-s">A product by:</p>
+  <Image
+    src="/Images/Ona Insights Logo - black .png"
+    alt="Ona Insights"
+    width={300}
+    height={70}
+    className="opacity-80"
+  />
+</div>
     </div>
   );
 }

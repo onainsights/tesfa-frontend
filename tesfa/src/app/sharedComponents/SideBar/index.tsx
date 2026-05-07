@@ -146,7 +146,6 @@ const Sidebar = () => {
             >
               <RiSidebarFoldLine size={30} />
             </button>
-           
           </div>
           <nav className="flex flex-col gap-10">
             <SidebarItem
@@ -183,14 +182,26 @@ const Sidebar = () => {
             />
           </nav>
         </div>
-        <div className="mb-4">
-          <SidebarItem
-            icon={<LuLogOut size={30} />}
-            label="Logout"
-            isOpen={isOpen || isMobileOpen}
-            active={pathname === ""}
-            onClick={handleLogoutClick}
-          />
+        <div className="flex flex-col">
+          <div className="mb-4">
+            <SidebarItem
+              icon={<LuLogOut size={30} />}
+              label="Logout"
+              isOpen={isOpen || isMobileOpen}
+              active={pathname === ""}
+              onClick={handleLogoutClick}
+            />
+          </div>
+          {(isOpen || isMobileOpen) && (
+            <div className="px-2 pb-2 flex flex-col items-center">
+              <p className="text-white text-xs mb-1 opacity-70">Powered by</p>
+              <img
+                src="/Images/ona-insights-logo-long.svg"
+                alt="Ona Insights"
+                className="w-54 opacity-90"
+              />
+            </div>
+          )}
         </div>
       </div>
       {showLogoutConfirm &&

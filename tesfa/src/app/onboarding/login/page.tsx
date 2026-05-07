@@ -34,22 +34,27 @@ export default function LoginPage() {
       }else{
         router.push("/dashboard");
       }
-  
-      
     }
   };
 
   return (
-  
     <div className="flex flex-col md:flex-row items-center justify-center min-h-screen bg-[#FDF6F6] px-4 md:px-12 py-8">
       <div className="flex flex-col md:flex-row items-center gap-x-49 max-w-screen-xl w-full mx-auto">
-        <div className="flex justify-center mb-8 md:mb-0">
+        <div className="flex flex-row items-center justify-center gap-6 mb-8 md:mb-0">
           <Image
             src="/Images/Group 184.png"
-            alt="Logo"
-            width={500}
-            height={200}
+            alt="Tesfa Logo"
+            width={300}
+            height={300}
             className="rounded-full drop-shadow-lg"
+          />
+          <div className="h-70 w-px bg-gray-300"></div>
+          <Image
+            src="/Images/Ona Insights -thumbnail.svg"
+            alt="Ona Insights"
+            width={250}
+            height={250}
+            className="opacity-90"
           />
         </div>
         <div className="md:w-1/2 text-left max-w-md">
@@ -115,7 +120,7 @@ export default function LoginPage() {
             </button>
             {error && <p className="text-red-500 text-sm text-center mt-2">{error}</p>}
             <p className="text-center text-[#2BBCB2] text-xl mt-4">
-              Don’t have an account?{" "}
+              Don't have an account?{" "}
               <a href="/onboarding/register" className="text-[#F5A623] font-bold hover:underline">
                 Sign Up
               </a>
