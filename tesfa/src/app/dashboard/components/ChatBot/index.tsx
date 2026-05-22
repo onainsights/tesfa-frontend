@@ -107,7 +107,7 @@ export default function ChatWidget() {
     if (open && !greeted && localLogs.length === 0) {
       const greetingMessage: Message = {
         id: uniqueId(),
-        text: "Hi, I'm Tesfa — your AI assistant. How can I help you today?",
+        text: "Hi, I'm Tesfa AI — I provide health risk assessments for conflict-affected regions in East Africa. Ask me about disease risks, recommended interventions, or general health topics related to conflict zones.",
         sender: "bot",
       };
       setLocalLogs([greetingMessage]);
@@ -174,7 +174,7 @@ export default function ChatWidget() {
   const handleReloadChat = () => {
     const greetingMessage: Message = {
       id: uniqueId(),
-      text: "Hi, I'm Tesfa — your AI assistant. How can I help you today?",
+      text: "Hi, I'm Tesfa AI — I provide health risk assessments for conflict-affected regions in East Africa. Ask me about disease risks, recommended interventions, or general health topics related to conflict zones.",
       sender: "bot",
     };
     setLocalLogs([greetingMessage]);

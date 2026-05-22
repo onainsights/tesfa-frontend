@@ -43,7 +43,7 @@ export default function WelcomeScreen() {
           </button>
 
           <div className="fixed bottom-6 left-0 right-0 flex flex-col items-center gap-1">
-            <p className="text-gray-500 text-s">A product by:</p>
+            <p className="text-gray-500 text-s">A Demo by:</p>
             <Image
               src="/Images/Ona Insights Logo - black .png"
               alt="Ona Insights"

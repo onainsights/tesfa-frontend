@@ -59,6 +59,7 @@ export interface Country {
   countries_name: string;
   geometry: Geometry;
   is_affected: boolean;
+  conflict_type: 'none' | 'post_war' | 'active';
 }
 
 export interface Region {
@@ -67,6 +68,7 @@ export interface Region {
   country: string;
   geometry: Geometry;
   is_affected: boolean;
+  conflict_type: 'none' | 'post_war' | 'active';
 }
 export interface QueryLog {
   id: number;

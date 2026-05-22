@@ -4,7 +4,7 @@ import ReactDOM from "react-dom";
 import { useRouter, usePathname } from "next/navigation";
 import { RiSidebarFoldLine } from "react-icons/ri";
 import { HiSquares2X2 } from "react-icons/hi2";
-import { LuClock3, LuClipboardList, LuUser, LuLogOut } from "react-icons/lu";
+import { LuClock3, LuClipboardList, LuUser, LuLogOut, LuChartBar } from "react-icons/lu";
 
 interface SidebarItemProps {
   icon: React.ReactNode;
@@ -157,8 +157,16 @@ const Sidebar = () => {
               onClick={() => handleNavigation("/dashboard")}
             />
             <SidebarItem
+              icon={<LuChartBar size={30} />}
+              label="Report"
+              isOpen={isOpen || isMobileOpen}
+              active={pathname === "/report"}
+              path="/report"
+              onClick={() => handleNavigation("/report")}
+            />
+            <SidebarItem
               icon={<LuClipboardList size={30} />}
-              label="Tasks"
+              label="Interventions"
               isOpen={isOpen || isMobileOpen}
               active={pathname === "/tasks"}
               path="/tasks"
@@ -166,7 +174,7 @@ const Sidebar = () => {
             />
             <SidebarItem
               icon={<LuClock3 size={30} />}
-              label="Task Tracking"
+              label="Tracker"
               isOpen={isOpen || isMobileOpen}
               active={pathname === "/kanban"}
               path="/kanban"

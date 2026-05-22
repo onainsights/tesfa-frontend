@@ -9,12 +9,6 @@ import { useRegions } from '../../../hooks/useRegions';
 import { usePredictions } from '../../../hooks/usePrediction';
 import useWorldLand from '../../../hooks/useWorldLand';
 
-const applyStyle = (layer: Layer, opacity: number) => {
-  if ((layer as Path).setStyle) {
-    (layer as Path).setStyle({ fillOpacity: opacity });
-  }
-};
-
 function isCountry(properties: Country | Region): properties is Country {
   return (properties as Country).country_id !== undefined;
 }
@@ -118,7 +112,7 @@ const MapClient = () => {
           type: 'FeatureCollection',
           features: valid.map(country => ({
             type: 'Feature',
-            properties: { ...country, color: country.is_affected ? '#BA6D58' : '#386c80ff' },
+            properties: { ...country, color: country.conflict_type === 'active' ? '#E8543A' : country.conflict_type === 'post_war' ? '#BA6D58' : '#386c80ff' },
             geometry: country.geometry!,
           })),
         };
@@ -134,11 +128,9 @@ const MapClient = () => {
             if (!f) return;
             l.on('mouseover', () => {
               setHoveredFeature(f);
-              applyStyle(l, 1);
             });
             l.on('mouseout', () => {
               setHoveredFeature(null);
-              applyStyle(l, 0.8);
             });
           },
         }).addTo(leafletMapRef.current!);
@@ -160,7 +152,7 @@ const MapClient = () => {
           type: 'FeatureCollection',
           features: valid.map(region => ({
             type: 'Feature',
-            properties: { ...region, color: region.is_affected ? '#0E0202' : '#386c80ff' },
+            properties: { ...region, color: region.conflict_type === 'active' ? '#E8543A' : region.conflict_type === 'post_war' ? '#BA6D58' : '#386c80ff' },
             geometry: region.geometry!,
           })),
         };
@@ -176,11 +168,9 @@ const MapClient = () => {
             if (!f) return;
             l.on('mouseover', () => {
               setHoveredFeature(f);
-              applyStyle(l, 0.9);
             });
             l.on('mouseout', () => {
               setHoveredFeature(null);
-              applyStyle(l, 0.6);
             });
           },
         });
@@ -284,7 +274,10 @@ const MapClient = () => {
           </div>
         </div>
       )}
-    </div>
+      <div className="absolute bottom-10 right-15 z-[1150] bg-[#2BBCB2] text-white text-lg px-3 py-2 rounded-lg shadow-md font-medium">
+          Training data cutoff: 2025
+        </div>
+      </div>
   );
 };
 export default MapClient;

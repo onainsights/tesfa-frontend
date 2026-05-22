@@ -46,6 +46,9 @@ const DashboardPage = () => {
       <Layout>
         <div className="flex flex-row h-screen bg-gray-100">
           <main className="flex-1 relative">
+            <div className="absolute top-4 left-1/2 -translate-x-1/2 z-[1150] bg-white/90 backdrop-blur-sm px-6 py-2 rounded-full shadow-md text-lg text-gray-700 font-medium border border-gray-200">
+              🔍 What are the long-term health risks in conflict-affected regions of East Africa?
+            </div>
             <MapClient />
             <ChatWidget />
             <MapLegend/>

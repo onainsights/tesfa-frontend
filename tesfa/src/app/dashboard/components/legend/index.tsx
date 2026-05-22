@@ -1,5 +1,6 @@
 export default function MapLegend() {
   const items = [
+    { color: "bg-[#E8543A]", label: "Active war Areas" },
     { color: "bg-[#BA6D58]", label: "Post war Areas" },
     { color: "bg-[#386c80ff]", label: "No war Areas" },
     { color: "bg-[#00353D]", label: "Not covered yet" },
