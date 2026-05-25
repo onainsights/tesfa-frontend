@@ -43,10 +43,6 @@ const MapClient = () => {
       zoomControl: false,
     });
 
-    // Create three panes with explicit z-indexes so layer order is always correct:
-    // worldLandPane (200) → behind everything
-    // countriesPane  (300) → above world land
-    // regionsPane    (400) → above countries
     map.createPane('worldLandPane');
     map.getPane('worldLandPane')!.style.zIndex = '200';
 
@@ -152,17 +148,20 @@ const MapClient = () => {
           type: 'FeatureCollection',
           features: valid.map(region => ({
             type: 'Feature',
-            properties: { ...region, color: region.conflict_type === 'active' ? '#E8543A' : region.conflict_type === 'post_war' ? '#BA6D58' : '#386c80ff' },
+            properties: {
+              ...region,
+              color: region.is_affected ? '#E8543A' : '#386c80ff',
+            },
             geometry: region.geometry!,
           })),
         };
         const layer = L.geoJSON(fc, {
           pane: 'regionsPane',
           style: f => ({
-            fillColor: f?.properties?.color || '#0F4C75',
-            weight: 0.3,
+            fillColor: f?.properties?.color || '#386c80ff',
+            weight: 0.5,
             color: '#fff',
-            fillOpacity: 0.6,
+            fillOpacity: 0.9,
           }),
           onEachFeature: (f, l) => {
             if (!f) return;
