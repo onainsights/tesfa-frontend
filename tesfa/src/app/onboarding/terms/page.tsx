@@ -7,100 +7,88 @@ export default function TermsPage() {
   };
   return (
     <div className="min-h-screen bg-white flex items-center justify-center p-4">
-      <div className="w-full max-w-3xl bg-[#2BBCB2] text-white rounded-xl overflow-hidden shadow-2xl border border-[#F5A623]/30">
-        <div className="p-5 border-b border-[#F5A623]/30 flex justify-between items-center sticky top-0 bg-[#2BBCB2] z-10">
-          <h1 className="text-2xl md:text-3xl font-bold text-white">Terms and Conditions</h1>
+      <div className="w-full max-w-3xl bg-gray-50 text-gray-800 rounded-xl overflow-hidden shadow-lg border border-gray-200">
+        <div className="p-5 border-b border-gray-200 flex justify-between items-center sticky top-0 bg-gray-50 z-10">
+          <h1 className="text-2xl md:text-3xl font-semibold text-gray-800">Terms and Conditions</h1>
           <button
             onClick={() => router.back()}
-            className="text-white hover:text-white text-5xl cursor-pointer  w-8 h-8 flex items-center justify-center"
+            className="text-gray-500 hover:text-gray-800 text-4xl cursor-pointer w-8 h-8 flex items-center justify-center"
             aria-label="Close"
           >
             &times;
           </button>
         </div>
-        <div className="max-h-[70vh] overflow-y-auto p-6 text-base md:text-lg leading-relaxed">
+        <div className="max-h-[70vh] overflow-y-auto p-6 text-base leading-relaxed text-gray-700">
+
+          <div className="mb-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+            <p className="text-sm text-yellow-800 font-medium">
+              ⚠ Demo Notice: This is a demonstration instance. It is intended for evaluation and research purposes only. Data entered on this platform may be deleted at any time without prior notice. 
+            </p>
+          </div>
+
           <section className="mb-6">
-            <h2 className="text-xl font-semibold text-white mb-2">1. Introduction</h2>
+            <h2 className="text-lg font-semibold text-gray-800 mb-2">1. Introduction</h2>
             <p>
-              Welcome to Tesfa! By using our platform and related services, you agree to these Terms and Conditions. Please read them carefully before using Tesfa.
+              Welcome to Tesfa. By accessing this platform, you agree to these Terms and Conditions. Please read them before proceeding.
             </p>
           </section>
           <section className="mb-6">
-            <h2 className="text-xl font-semibold text-white mb-2">2. Who We Are</h2>
+            <h2 className="text-lg font-semibold text-gray-800 mb-2">2. About This Platform</h2>
             <p>
-              Tesfa is an AI-powered platform designed to support NGOs, health agencies, and policymakers in post-conflict regions. Our system provides data-driven insights, helps organizations plan long-term health recovery, and promotes sustainable interventions.
+              Tesfa is an AI-powered proof-of-concept platform developed to support NGOs, health agencies, and policymakers working in conflict-affected regions. It provides AI-generated health risk predictions and insights to assist in planning and decision-making. This instance is a demo and is not intended for production use.
             </p>
           </section>
           <section className="mb-6">
-            <h2 className="text-xl font-semibold text-white mb-2">3. Your Responsibilities</h2>
+            <h2 className="text-lg font-semibold text-gray-800 mb-2">3. Your Responsibilities</h2>
             <p>When using Tesfa, you agree to:</p>
             <ul className="list-disc pl-5 space-y-1 mt-2">
               <li>Provide accurate information when creating or managing your account.</li>
-              <li>Use Tesfa’s tools and insights only for legitimate organizational or research purposes.</li>
-              <li>Keep your login details confidential and protect your account from unauthorized access.</li>
+              <li>Use the platform only for legitimate research, evaluation, or organizational purposes.</li>
+              <li>Keep your login credentials confidential.</li>
             </ul>
           </section>
           <section className="mb-6">
-            <h2 className="text-xl font-semibold text-white mb-2">4. Data and Privacy</h2>
+            <h2 className="text-lg font-semibold text-gray-800 mb-2">4. Data and Privacy</h2>
             <p>
-              We collect limited personal and organizational information (like your name, email, institution) to provide you with a secure and personalized experience. Tesfa follows data protection laws, including the Kenya Data Protection Act (2019) and GDPR where applicable. Your data is stored securely using encryption and access controls. By using Tesfa, you consent to the collection and use of your data as outlined in our Privacy Policy.
+              We collect limited information such as your name, email, and organization to provide a personalized experience. Tesfa follows applicable data protection regulations including the Kenya Data Protection Act (2019) and GDPR where relevant. By using this platform, you consent to the collection and use of your data as described here. As this is a demo instance, please avoid entering sensitive or confidential information.
             </p>
           </section>
           <section className="mb-6">
-            <h2 className="text-xl font-semibold text-white mb-2">5. Reports and Insights</h2>
+            <h2 className="text-lg font-semibold text-gray-800 mb-2">5. AI-Generated Content</h2>
             <p>
-              Tesfa provides insights, projections, and recommendations based on available data. While we strive for accuracy, our outputs are informational tools, not guaranteed results. Always validate insights with local data, expert judgment, and your organization’s policies before making decisions.
+              All predictions, reports, and recommendations on this platform are generated by artificial intelligence based on available conflict health data. While we aim for accuracy, AI-generated content may contain errors or limitations. Outputs should be treated as indicative and should not replace expert medical, humanitarian, or policy judgment.
             </p>
           </section>
           <section className="mb-6">
-            <h2 className="text-xl font-semibold text-white mb-2">6. Acceptable Use</h2>
+            <h2 className="text-lg font-semibold text-gray-800 mb-2">6. Acceptable Use</h2>
             <p>You agree not to:</p>
             <ul className="list-disc pl-5 space-y-1 mt-2">
               <li>Use Tesfa for illegal, unethical, or harmful activities.</li>
               <li>Upload or share false, misleading, or confidential data without permission.</li>
-              <li>Attempt to interfere with or disrupt Tesfa’s systems, APIs, or security.</li>
+              <li>Attempt to interfere with or disrupt the platform's systems or security.</li>
             </ul>
           </section>
           <section className="mb-6">
-            <h2 className="text-xl font-semibold text-white mb-2">7. Limitation of Liability</h2>
+            <h2 className="text-lg font-semibold text-gray-800 mb-2">7. Limitation of Liability</h2>
             <p>
-              Tesfa is a decision-support tool. We’re not liable for any losses, damages, or decisions made based on Tesfa’s outputs or recommendations. We do our best to ensure the accuracy and reliability of data, but we can’t guarantee it will always be complete or error-free.
+              Tesfa is a decision-support tool provided as-is for demonstration purposes. We are not liable for any losses, damages, or decisions made based on the platform's outputs. We make no guarantees that data will always be complete, accurate, or available.
             </p>
           </section>
           <section className="mb-6">
-            <h2 className="text-xl font-semibold text-white mb-2">8. Changes to These Terms</h2>
+            <h2 className="text-lg font-semibold text-gray-800 mb-2">8. Contact Us</h2>
             <p>
-              We may update these Terms from time to time. When we make significant changes, we’ll notify users through the platform or email. Continuing to use Tesfa after updates means you accept the new Terms.
-            </p>
-          </section>
-          <section className="mb-6">
-            <h2 className="text-xl font-semibold text-white mb-2">9. Governing Law</h2>
-            <p>
-              These Terms are governed by the laws of Kenya, and where applicable, by international data and digital service regulations.
-            </p>
-          </section>
-          <section className="mb-6">
-            <h2 className="text-xl font-semibold text-white mb-2">10. Contact Us</h2>
-            <p>
-              For any questions, feedback, or data-related requests, contact at:
+              For questions, feedback, or data-related requests, please contact us at:
               <br />
-              <a href="mailto:tesfa@onainsights.io" className="font-medium">tesfa@onainsights.io</a>
-
+              <a href="mailto:info@onainsights.io" className="font-medium text-[#2BBCB2]">info@onainsights.io</a>
               <br />
               Nairobi, Kenya
             </p>
           </section>
-          <section className="pt-4 border-t border-[#F5A623]/30">
-            <h3 className="text-lg font-semibold text-white">Privacy Tip</h3>
-            <p className="mt-2">
-              Always check your account settings and data permissions regularly. If you have any concerns about how your information is used, contact us immediately.
-            </p>
-          </section>
         </div>
-        <div className="p-4 border-t border-[#F5A623]/30 bg-[#2BBCB2] flex justify-end">
+        <div className="p-4 border-t border-gray-200 bg-gray-50 flex justify-end">
           <button
             onClick={handleAgree}
-            className="px-5 py-2 cursor-pointer bg-[#F5A623] text-white font-bold rounded-lg hover:bg-[#E0B54A] transition"
+            className="px-5 py-2 cursor-pointer bg-[#2BBCB2] text-white font-semibold rounded-lg hover:bg-teal-600 transition"
           >
             Agree
           </button>

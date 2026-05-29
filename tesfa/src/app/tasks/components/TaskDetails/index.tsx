@@ -268,7 +268,7 @@ return (
               disabled={selectedTasks.size === 0}
               className="bg-[#2BBCB2] hover:bg-[#1AA99F] text-white px-4 sm:px-6 py-2 rounded-full disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer w-full sm:w-auto"
             >
-              Add ({selectedTasks.size}) to my tasks
+              Add ({selectedTasks.size}) to my tracker
             </Button>
           </div>
         )}
