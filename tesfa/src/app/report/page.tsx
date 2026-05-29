@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import Layout from '../sharedComponents/Layout';
 import ProtectedRoute from '../sharedComponents/ProtectedRoot';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, RadarChart, PolarGrid, PolarAngleAxis, Radar, Legend } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 
 const COLORS = {
   teal: '#2BBCB2',
@@ -11,7 +11,6 @@ const COLORS = {
   red: '#E8543A',
   salmon: '#BA6D58',
   dark: '#00353D',
-  light: '#F0FAFA',
 };
 
 const countryData = [
@@ -23,41 +22,216 @@ const countryData = [
     diseases: [
       { disease_name: 'Typhoid Fever', risk_score: 80, risk_level: 'high' },
       { disease_name: 'Malaria', risk_score: 75, risk_level: 'high' },
-      { disease_name: 'Infectious Diseases (Conflict)', risk_score: 70, risk_level: 'medium' },
+      { disease_name: 'Infectious Diseases', risk_score: 70, risk_level: 'medium' },
+    ],
+    regions: [
+      {
+        name: 'Khartoum',
+        description: 'Ongoing conflict, displacement, limited healthcare access, and economic instability create a conducive environment for disease outbreaks and hinder access to treatment.',
+        diseases: [
+          { disease_name: 'Malaria', risk_score: 95, risk_level: 'high' },
+          { disease_name: 'Diarrheal Diseases (Cholera, Dysentery)', risk_score: 90, risk_level: 'high' },
+          { disease_name: 'Acute Respiratory Infections', risk_score: 85, risk_level: 'high' },
+          { disease_name: 'Non-Communicable Diseases', risk_score: 80, risk_level: 'high' },
+          { disease_name: 'Wound Infections', risk_score: 75, risk_level: 'high' },
+        ],
+      },
+      {
+        name: 'Central Darfur',
+        description: 'The ongoing armed conflict in Central Darfur disrupts healthcare access, infrastructure, and basic services, leading to increased vulnerability to infectious diseases and exacerbating existing health issues.',
+        diseases: [
+          { disease_name: 'Malaria', risk_score: 95, risk_level: 'high' },
+          { disease_name: 'Acute Respiratory Infections', risk_score: 90, risk_level: 'high' },
+          { disease_name: 'Diarrheal Diseases', risk_score: 85, risk_level: 'high' },
+          { disease_name: 'Malnutrition', risk_score: 80, risk_level: 'high' },
+          { disease_name: 'Non-Communicable Diseases', risk_score: 75, risk_level: 'high' },
+        ],
+      },
+      {
+        name: 'North Darfur',
+        description: 'The ongoing armed conflict in North Darfur disrupts healthcare access, sanitation, and food security, creating a high-risk environment for both communicable and non-communicable diseases, particularly among internally displaced people.',
+        diseases: [
+          { disease_name: 'Malaria', risk_score: 95, risk_level: 'high' },
+          { disease_name: 'Acute Respiratory Infections', risk_score: 90, risk_level: 'high' },
+          { disease_name: 'Diarrheal Diseases', risk_score: 85, risk_level: 'high' },
+          { disease_name: 'Malnutrition', risk_score: 80, risk_level: 'high' },
+          { disease_name: 'Non-Communicable Diseases', risk_score: 75, risk_level: 'high' },
+        ],
+      },
+      {
+        name: 'North Kordofan',
+        description: 'Ongoing armed conflict in North Kordofan disrupts healthcare access and creates conditions conducive to the spread of infectious diseases, along with exacerbating pre-existing non-communicable conditions.',
+        diseases: [
+          { disease_name: 'Malaria', risk_score: 95, risk_level: 'high' },
+          { disease_name: 'Acute Respiratory Infections', risk_score: 90, risk_level: 'high' },
+          { disease_name: 'Diarrheal Diseases', risk_score: 85, risk_level: 'high' },
+          { disease_name: 'Wound Infections', risk_score: 80, risk_level: 'high' },
+          { disease_name: 'Non-Communicable Diseases', risk_score: 75, risk_level: 'high' },
+        ],
+      },
+      {
+        name: 'South Kordofan',
+        description: 'The ongoing armed conflict in South Kordofan leads to internal displacement, disruption of healthcare services, and increased vulnerability to both communicable and non-communicable diseases.',
+        diseases: [
+          { disease_name: 'Non-Communicable Diseases', risk_score: 80, risk_level: 'high' },
+          { disease_name: 'Infectious Diseases', risk_score: 75, risk_level: 'high' },
+          { disease_name: 'Malnutrition', risk_score: 70, risk_level: 'medium' },
+          { disease_name: 'Mental Health Disorders', risk_score: 65, risk_level: 'medium' },
+        ],
+      },
     ],
   },
   {
     name: 'Ethiopia',
     conflict_type: 'Post War',
     color: COLORS.salmon,
-    description: 'The conflict in Tigray region has led to displacement, damage to the healthcare system, and a lack of access to basic necessities like clean water and sanitation. Despite a ceasefire, the region continues to face severe humanitarian challenges with millions displaced and healthcare facilities still recovering from widespread destruction.',
+    description: 'The conflict in Tigray region has led to displacement, damage to the healthcare system, and a lack of access to basic necessities like clean water and sanitation. Despite a ceasefire, the region continues to face severe humanitarian challenges.',
     diseases: [
       { disease_name: 'Displacement Health Issues', risk_score: 80, risk_level: 'high' },
       { disease_name: 'Malnutrition', risk_score: 75, risk_level: 'high' },
       { disease_name: 'Waterborne Diseases', risk_score: 70, risk_level: 'medium' },
       { disease_name: 'Injuries from Conflict', risk_score: 65, risk_level: 'medium' },
     ],
+    regions: [
+      {
+        name: 'Tigray',
+        description: 'Conflict disruption, rural setting, and weakened health systems create increased vulnerability to infectious diseases and injuries.',
+        diseases: [
+          { disease_name: 'Malaria', risk_score: 80, risk_level: 'high' },
+          { disease_name: 'Diarrheal Diseases', risk_score: 75, risk_level: 'high' },
+          { disease_name: 'Respiratory Infections', risk_score: 70, risk_level: 'medium' },
+          { disease_name: 'Wound Infections', risk_score: 65, risk_level: 'medium' },
+        ],
+      },
+      {
+        name: 'Amhara',
+        description: 'Armed conflict disrupts healthcare access, damages infrastructure, and increases vulnerability to disease outbreaks due to poor sanitation, displacement, and limited resources.',
+        diseases: [
+          { disease_name: 'Malaria', risk_score: 80, risk_level: 'high' },
+          { disease_name: 'Diarrheal Diseases (Cholera, Dysentery)', risk_score: 75, risk_level: 'high' },
+          { disease_name: 'Respiratory Infections (Pneumonia, TB)', risk_score: 70, risk_level: 'medium' },
+          { disease_name: 'Wound Infections', risk_score: 65, risk_level: 'medium' },
+          { disease_name: 'Mental Health Disorders (PTSD)', risk_score: 60, risk_level: 'medium' },
+        ],
+      },
+      {
+        name: 'Afar',
+        description: 'The health risks in the Afar region are due to conflict-related disruptions to healthcare access, displacement, poor sanitation, and heightened vulnerability to infectious diseases.',
+        diseases: [
+          { disease_name: 'Malaria', risk_score: 95, risk_level: 'high' },
+          { disease_name: 'Acute Respiratory Infections', risk_score: 90, risk_level: 'high' },
+          { disease_name: 'Diarrheal Diseases', risk_score: 85, risk_level: 'high' },
+          { disease_name: 'Wound Infections', risk_score: 80, risk_level: 'high' },
+          { disease_name: 'Mental Health Disorders (PTSD)', risk_score: 75, risk_level: 'high' },
+        ],
+      },
+      {
+        name: 'Oromiya',
+        description: 'The Oromiya region likely experiences increased disease transmission and limited healthcare access due to potential conflict, displacement, and strained healthcare infrastructure.',
+        diseases: [
+          { disease_name: 'Malaria', risk_score: 80, risk_level: 'high' },
+          { disease_name: 'Diarrheal Diseases', risk_score: 75, risk_level: 'high' },
+          { disease_name: 'Pneumonia', risk_score: 70, risk_level: 'medium' },
+          { disease_name: 'Newborn Health Complications', risk_score: 65, risk_level: 'medium' },
+          { disease_name: 'Attack-related Injuries', risk_score: 60, risk_level: 'medium' },
+        ],
+      },
+      {
+        name: 'Somali Region',
+        description: 'Active conflict, displacement, and disruption of health systems significantly increase the risk of infectious diseases and malnutrition in the Somali region of Ethiopia.',
+        diseases: [
+          { disease_name: 'Malaria', risk_score: 95, risk_level: 'high' },
+          { disease_name: 'Acute Respiratory Infections', risk_score: 90, risk_level: 'high' },
+          { disease_name: 'Diarrheal Diseases', risk_score: 85, risk_level: 'high' },
+          { disease_name: 'Malnutrition', risk_score: 80, risk_level: 'high' },
+          { disease_name: 'Wound Infections', risk_score: 75, risk_level: 'high' },
+        ],
+      },
+    ],
   },
   {
     name: 'South Sudan',
     conflict_type: 'Active Conflict',
     color: COLORS.red,
-    description: 'Ongoing conflict has led to mass displacement, creating an environment highly conducive to the spread of waterborne diseases. Cholera outbreaks have become endemic in displacement camps, while malaria transmission remains persistently high due to collapsed vector control programs and inadequate shelter.',
+    description: 'Ongoing conflict has led to mass displacement creating an environment highly conducive to the spread of waterborne diseases. Cholera outbreaks have become endemic in displacement camps.',
     diseases: [
       { disease_name: 'Cholera', risk_score: 80, risk_level: 'high' },
       { disease_name: 'Malaria', risk_score: 75, risk_level: 'high' },
       { disease_name: 'Dysentery', risk_score: 70, risk_level: 'medium' },
+    ],
+    regions: [
+      {
+        name: 'Upper Nile',
+        description: 'The Upper Nile region suffers from limited access to healthcare, displacement, and poor sanitation, creating breeding grounds for infectious diseases and exacerbating existing health issues.',
+        diseases: [
+          { disease_name: 'Malaria', risk_score: 80, risk_level: 'high' },
+          { disease_name: 'Acute Respiratory Infections', risk_score: 75, risk_level: 'high' },
+          { disease_name: 'Diarrheal Diseases', risk_score: 70, risk_level: 'medium' },
+          { disease_name: 'Non-Communicable Diseases', risk_score: 65, risk_level: 'medium' },
+        ],
+      },
+      {
+        name: 'Jonglei',
+        description: 'Jonglei region faces significant health risks due to infectious diseases, limited access to healthcare, and a challenging humanitarian context exacerbated by conflict and displacement.',
+        diseases: [
+          { disease_name: 'Malaria', risk_score: 80, risk_level: 'high' },
+          { disease_name: 'Pneumonia', risk_score: 75, risk_level: 'high' },
+          { disease_name: 'Diarrhoea', risk_score: 70, risk_level: 'medium' },
+          { disease_name: 'Newborn Health Issues', risk_score: 65, risk_level: 'medium' },
+        ],
+      },
+      {
+        name: 'Northern Bahr el Ghazal',
+        description: 'Northern Bahr el Ghazal presents significant health risks due to disrupted healthcare access and increased vulnerability to both communicable and non-communicable diseases, alongside malnutrition.',
+        diseases: [
+          { disease_name: 'Non-Communicable Diseases', risk_score: 80, risk_level: 'high' },
+          { disease_name: 'Malnutrition', risk_score: 75, risk_level: 'high' },
+          { disease_name: 'Infectious Diseases', risk_score: 70, risk_level: 'medium' },
+        ],
+      },
     ],
   },
   {
     name: 'Somalia',
     conflict_type: 'Active Conflict',
     color: COLORS.red,
-    description: "Somalia's prolonged conflict has led to a complete breakdown in healthcare infrastructure, with limited access to clean water, sanitation, and medical care. Al-Shabaab insurgency continues to restrict humanitarian access to large parts of the country, leaving millions without basic health services.",
+    description: "Somalia's prolonged conflict has led to a complete breakdown in healthcare infrastructure. Al-Shabaab insurgency continues to restrict humanitarian access leaving millions without basic health services.",
     diseases: [
       { disease_name: 'Tuberculosis (TB)', risk_score: 80, risk_level: 'high' },
       { disease_name: 'Malaria', risk_score: 75, risk_level: 'high' },
       { disease_name: 'Malnutrition', risk_score: 70, risk_level: 'medium' },
+    ],
+    regions: [
+      {
+        name: 'Hiiraan',
+        description: 'The Hiiraan region faces significant health risks due to ongoing conflict, limited access to healthcare, and lack of reliable surveillance systems, leading to increased vulnerability to communicable diseases and malnutrition.',
+        diseases: [
+          { disease_name: 'Malnutrition', risk_score: 80, risk_level: 'high' },
+          { disease_name: 'Diarrheal Diseases', risk_score: 75, risk_level: 'high' },
+          { disease_name: 'Acute Respiratory Infections', risk_score: 70, risk_level: 'medium' },
+          { disease_name: 'Wound Infections', risk_score: 65, risk_level: 'medium' },
+        ],
+      },
+      {
+        name: 'Shabeellaha Dhexe',
+        description: 'Shabeellaha Dhexe experiences high rates of infectious diseases and malnutrition due to limited access to healthcare, sanitation, safe water, and adequate food supplies.',
+        diseases: [
+          { disease_name: 'Malaria', risk_score: 95, risk_level: 'high' },
+          { disease_name: 'Cholera', risk_score: 90, risk_level: 'high' },
+          { disease_name: 'Acute Respiratory Infections', risk_score: 85, risk_level: 'high' },
+          { disease_name: 'Malnutrition', risk_score: 80, risk_level: 'high' },
+        ],
+      },
+      {
+        name: 'Jubbada Hoose',
+        description: 'Jubbada Hoose faces critical health risks due to conflict, lack of infrastructure, poor sanitation, and limited access to healthcare, creating conditions ripe for infectious disease outbreaks and malnutrition.',
+        diseases: [
+          { disease_name: 'Malaria', risk_score: 95, risk_level: 'high' },
+          { disease_name: 'Cholera', risk_score: 90, risk_level: 'high' },
+          { disease_name: 'Acute Respiratory Infections', risk_score: 85, risk_level: 'high' },
+          { disease_name: 'Malnutrition', risk_score: 80, risk_level: 'high' },
+        ],
+      },
     ],
   },
 ];
@@ -86,15 +260,6 @@ const avgRiskByCountry = countryData.map(c => ({
   avgRisk: Math.round(c.diseases.reduce((sum, d) => sum + d.risk_score, 0) / c.diseases.length),
 }));
 
-const radarData = [
-  { subject: 'Malaria', Sudan: 75, Ethiopia: 0, 'South Sudan': 75, Somalia: 75 },
-  { subject: 'Malnutrition', Sudan: 0, Ethiopia: 75, 'South Sudan': 0, Somalia: 70 },
-  { subject: 'Cholera', Sudan: 0, Ethiopia: 0, 'South Sudan': 80, Somalia: 0 },
-  { subject: 'TB', Sudan: 0, Ethiopia: 0, 'South Sudan': 0, Somalia: 80 },
-  { subject: 'Typhoid', Sudan: 80, Ethiopia: 0, 'South Sudan': 0, Somalia: 0 },
-  { subject: 'Waterborne', Sudan: 70, Ethiopia: 70, 'South Sudan': 70, Somalia: 0 },
-];
-
 const StatCard = ({ title, value, subtitle, color }: { title: string; value: string | number; subtitle: string; color: string }) => (
   <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
     <p className="text-sm text-gray-500 font-medium uppercase tracking-wide">{title}</p>
@@ -105,29 +270,33 @@ const StatCard = ({ title, value, subtitle, color }: { title: string; value: str
 
 export default function ReportPage() {
   const [activeCountry, setActiveCountry] = useState(0);
+  const [activeRegion, setActiveRegion] = useState(0);
+
+  useEffect(() => {
+    setActiveRegion(0);
+  }, [activeCountry]);
 
   return (
     <ProtectedRoute>
       <Layout>
-        <div className="min-h-screen bg-gray-50 overflow-y-auto h-screen">
+        <div className="bg-gray-50 overflow-y-auto h-screen">
           {/* Hero Header */}
           <div className="bg-[#2BBCB2] text-white px-8 py-12">
             <div className="max-w-6xl mx-auto">
-              <div className="flex items-center gap-2 text-[#2BBCB2] text-sm font-medium mb-3">
-                <span></span>
-              </div>
               <h1 className="text-4xl font-bold mb-4">Health Risk Analysis Report</h1>
               <p className="text-white text-lg max-w-3xl leading-relaxed">
                 A comprehensive AI-generated analysis of long-term health risks across conflict-affected regions in East Africa.
                 This report synthesizes predictions from Sudan, Ethiopia, South Sudan, and Somalia based on historical conflict data,
                 displacement patterns, healthcare access, and disease surveillance records from 2000–2025.
               </p>
-              <div className="flex gap-4 mt-6 text-s text-white">
+              <div className="flex gap-4 mt-6 text-sm text-white flex-wrap">
                 <span>📅 Data cutoff: 2025</span>
                 <span>•</span>
                 <span>🌍 4 countries analyzed</span>
                 <span>•</span>
-                <span>🦠 13 disease risk assessments</span>
+                <span>🗺️ 16 regions assessed</span>
+                <span>•</span>
+                <span>🦠 AI-generated disease risk assessments</span>
               </div>
             </div>
           </div>
@@ -145,15 +314,15 @@ export default function ReportPage() {
                   for infectious disease outbreaks and nutritional emergencies.
                 </p>
                 <p className="text-gray-700 leading-relaxed text-base mb-4">
-                  Across all assessed countries, <strong>malaria emerges as the most consistently high-risk disease</strong>, present
-                  in three of four countries with risk scores of 75% or higher. Malnutrition and waterborne diseases follow closely,
-                  reflecting the compounding effects of food insecurity and collapsed water and sanitation infrastructure that
-                  characterize conflict settings.
+                  Across all assessed countries and regions, <strong>malaria emerges as the most consistently high-risk disease</strong>,
+                  present across virtually every assessed region with risk scores frequently exceeding 80-95%. Acute respiratory infections,
+                  diarrheal diseases, and malnutrition follow closely, reflecting the compounding effects of displacement, collapsed
+                  sanitation infrastructure, and food insecurity that characterize conflict settings.
                 </p>
                 <p className="text-gray-700 leading-relaxed text-base">
-                  Sudan and South Sudan face the most acute crisis conditions as active conflict zones, while Ethiopia's Tigray region,
-                  despite a ceasefire, continues to experience severe post-conflict health consequences. Somalia's prolonged instability
-                  has resulted in uniquely high tuberculosis risk alongside persistent malaria and malnutrition burdens.
+                  At the regional level, Khartoum, Afar, Central Darfur, North Darfur, North Kordofan, Somali Region of Ethiopia,
+                  Shabeellaha Dhexe, and Jubbada Hoose all show uniformly critical risk scores of 75-95% across multiple disease
+                  categories — representing the most acute hotspots requiring immediate humanitarian intervention.
                 </p>
               </div>
             </section>
@@ -163,9 +332,9 @@ export default function ReportPage() {
               <h2 className="text-2xl font-bold text-[#00353D] mb-4">Key Statistics</h2>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 <StatCard title="Countries Assessed" value={4} subtitle="East Africa region" color={COLORS.teal} />
-                <StatCard title="High Risk Diseases" value={8} subtitle="Risk score above 70%" color={COLORS.red} />
-                <StatCard title="Avg Risk Score" value="74%" subtitle="Across all assessments" color={COLORS.yellow} />
-                <StatCard title="Active Conflicts" value={3} subtitle="Sudan, S.Sudan, Somalia" color={COLORS.salmon} />
+                <StatCard title="Regions Assessed" value={16} subtitle="Sub-national level" color={COLORS.teal} />
+                <StatCard title="Active Conflicts" value={3} subtitle="Sudan, S.Sudan, Somalia" color={COLORS.red} />
+                <StatCard title="Post War" value={1} subtitle="Ethiopia" color={COLORS.salmon} />
               </div>
             </section>
 
@@ -245,19 +414,18 @@ export default function ReportPage() {
                   </BarChart>
                 </ResponsiveContainer>
                 <p className="text-sm text-gray-500 mt-4">
-                  Malaria is the only disease present as high risk across three of four countries, making it the single most
-                  critical health threat in the region. Malnutrition and waterborne diseases appear in multiple countries,
-                  reflecting the systemic collapse of food security and water infrastructure under conflict conditions.
+                  Malaria is the most cross-cutting health threat across the region. Malnutrition and waterborne diseases
+                  appear in multiple countries, reflecting the systemic collapse of food security and water infrastructure
+                  under conflict conditions.
                 </p>
               </div>
             </section>
 
-            {/* Country Deep Dives */}
+            {/* Country + Region Deep Dives */}
             <section>
-              <h2 className="text-2xl font-bold text-[#00353D] mb-2">Country-Level Analysis</h2>
-              <p className="text-gray-500 mb-6">Detailed health risk breakdown for each assessed country.</p>
+              <h2 className="text-2xl font-bold text-[#00353D] mb-2">Country & Regional Analysis</h2>
+              <p className="text-gray-500 mb-6">Detailed health risk breakdown at country and sub-national level.</p>
 
-              {/* Tab Navigation */}
               <div className="flex gap-2 mb-6 flex-wrap">
                 {countryData.map((c, i) => (
                   <button
@@ -272,10 +440,10 @@ export default function ReportPage() {
                 ))}
               </div>
 
-              {/* Active Country Detail */}
               {countryData.map((country, i) => (
                 <div key={i} className={activeCountry === i ? 'block' : 'hidden'}>
                   <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+                    {/* Country header */}
                     <div className="flex items-start justify-between mb-6">
                       <div>
                         <h3 className="text-2xl font-bold text-gray-800">{country.name}</h3>
@@ -293,22 +461,19 @@ export default function ReportPage() {
 
                     <p className="text-gray-700 leading-relaxed mb-8">{country.description}</p>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                      {/* Disease Bar Chart */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
                       <div>
-                        <h4 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-4">Disease Risk Scores</h4>
+                        <h4 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-4">Country-Level Disease Risk</h4>
                         <ResponsiveContainer width="100%" height={200}>
                           <BarChart data={country.diseases} margin={{ top: 0, right: 10, left: 0, bottom: 0 }}>
                             <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
-                            <XAxis dataKey="disease_name" tick={{ fontSize: 10, fill: '#666' }} />
+                            <XAxis dataKey="disease_name" tick={{ fontSize: 9, fill: '#666' }} />
                             <YAxis domain={[0, 100]} tick={{ fontSize: 11, fill: '#666' }} />
                             <Tooltip formatter={(val) => [`${val}%`, 'Risk Score']} />
                             <Bar dataKey="risk_score" fill={country.color} radius={[4, 4, 0, 0]} />
                           </BarChart>
                         </ResponsiveContainer>
                       </div>
-
-                      {/* Disease Risk List */}
                       <div>
                         <h4 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-4">Risk Breakdown</h4>
                         <div className="space-y-3">
@@ -321,10 +486,7 @@ export default function ReportPage() {
                                 </span>
                               </div>
                               <div className="w-full bg-gray-100 rounded-full h-2">
-                                <div
-                                  className="h-2 rounded-full transition-all duration-500"
-                                  style={{ width: `${d.risk_score}%`, backgroundColor: d.risk_level === 'high' ? COLORS.red : COLORS.yellow }}
-                                />
+                                <div className="h-2 rounded-full" style={{ width: `${d.risk_score}%`, backgroundColor: d.risk_level === 'high' ? COLORS.red : COLORS.yellow }} />
                               </div>
                               <span className={`text-xs mt-0.5 inline-block ${d.risk_level === 'high' ? 'text-red-500' : 'text-yellow-500'}`}>
                                 {d.risk_level.toUpperCase()} RISK
@@ -334,29 +496,68 @@ export default function ReportPage() {
                         </div>
                       </div>
                     </div>
+
+                    {/* Regional breakdown */}
+                    <div className="border-t border-gray-100 pt-8">
+                      <h4 className="text-lg font-bold text-[#00353D] mb-2">Regional Breakdown — {country.name}</h4>
+                      <p className="text-gray-500 text-sm mb-5">Select a region to view its AI-generated health risk assessment.</p>
+
+                      <div className="flex gap-2 mb-6 flex-wrap">
+                        {country.regions.map((r, ri) => (
+                          <button
+                            key={ri}
+                            onClick={() => setActiveRegion(ri)}
+                            className={`px-4 py-1.5 rounded-full text-xs font-medium transition-all ${activeRegion === ri ? 'text-white shadow-md' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}
+                            style={activeRegion === ri ? { backgroundColor: country.color } : {}}
+                          >
+                            {r.name}
+                          </button>
+                        ))}
+                      </div>
+
+                      {country.regions.map((region, ri) => (
+                        <div key={ri} className={activeRegion === ri ? 'block' : 'hidden'}>
+                          <div className="bg-gray-50 rounded-xl p-6 border border-gray-100">
+                            <div className="flex justify-between items-start mb-4">
+                              <h5 className="text-lg font-bold text-gray-800">{region.name}</h5>
+                              <span className="text-sm font-bold px-3 py-1 rounded-full text-white" style={{ backgroundColor: country.color }}>
+                                Avg: {Math.round(region.diseases.reduce((s, d) => s + d.risk_score, 0) / region.diseases.length)}%
+                              </span>
+                            </div>
+                            <p className="text-gray-600 text-sm leading-relaxed mb-6">{region.description}</p>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                              <ResponsiveContainer width="100%" height={200}>
+                                <BarChart data={region.diseases} margin={{ top: 0, right: 10, left: 0, bottom: 0 }}>
+                                  <CartesianGrid strokeDasharray="3 3" stroke="#e5e5e5" />
+                                  <XAxis dataKey="disease_name" tick={{ fontSize: 8, fill: '#666' }} />
+                                  <YAxis domain={[0, 100]} tick={{ fontSize: 10, fill: '#666' }} />
+                                  <Tooltip formatter={(val) => [`${val}%`, 'Risk Score']} />
+                                  <Bar dataKey="risk_score" fill={country.color} radius={[4, 4, 0, 0]} />
+                                </BarChart>
+                              </ResponsiveContainer>
+                              <div className="space-y-3">
+                                {region.diseases.map((d, di) => (
+                                  <div key={di}>
+                                    <div className="flex justify-between mb-1">
+                                      <span className="text-xs font-medium text-gray-700">{d.disease_name}</span>
+                                      <span className="text-xs font-bold" style={{ color: d.risk_level === 'high' ? COLORS.red : COLORS.yellow }}>
+                                        {d.risk_score}%
+                                      </span>
+                                    </div>
+                                    <div className="w-full bg-gray-200 rounded-full h-1.5">
+                                      <div className="h-1.5 rounded-full" style={{ width: `${d.risk_score}%`, backgroundColor: d.risk_level === 'high' ? COLORS.red : COLORS.yellow }} />
+                                    </div>
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
               ))}
-            </section>
-
-            {/* Disease Comparison Radar */}
-            <section>
-              <h2 className="text-2xl font-bold text-[#00353D] mb-2">Cross-Country Disease Comparison</h2>
-              <p className="text-gray-500 mb-6">Radar chart showing disease risk overlap across all four countries.</p>
-              <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-                <ResponsiveContainer width="100%" height={380}>
-                  <RadarChart data={radarData}>
-                    <PolarGrid stroke="#e5e7eb" />
-                    <PolarAngleAxis dataKey="subject" tick={{ fill: '#555', fontSize: 12 }} />
-                    <Radar name="Sudan" dataKey="Sudan" stroke={COLORS.red} fill={COLORS.red} fillOpacity={0.15} />
-                    <Radar name="Ethiopia" dataKey="Ethiopia" stroke={COLORS.salmon} fill={COLORS.salmon} fillOpacity={0.15} />
-                    <Radar name="South Sudan" dataKey="South Sudan" stroke={COLORS.yellow} fill={COLORS.yellow} fillOpacity={0.15} />
-                    <Radar name="Somalia" dataKey="Somalia" stroke={COLORS.teal} fill={COLORS.teal} fillOpacity={0.15} />
-                    <Legend />
-                    <Tooltip />
-                  </RadarChart>
-                </ResponsiveContainer>
-              </div>
             </section>
 
             {/* Conclusions */}
@@ -366,36 +567,44 @@ export default function ReportPage() {
                 <div>
                   <h3 className="font-bold text-[#2BBCB2] text-lg mb-2">1. Prioritize Malaria Control Across the Region</h3>
                   <p className="text-gray-700 leading-relaxed">
-                    Malaria is the single most cross-cutting health threat in East Africa's conflict zones, affecting Sudan,
-                    South Sudan, and Somalia with risk scores of 75% or higher. NGOs and health agencies should prioritize
-                    mass distribution of insecticide-treated bed nets, indoor residual spraying programs, and ensuring
-                    uninterrupted supply of artemisinin-based combination therapies (ACTs) across all three countries.
+                    Malaria consistently appears as a high-risk disease across virtually all assessed regions, with scores
+                    reaching 95% in Khartoum, Afar, Central Darfur, North Darfur, North Kordofan, Somali Region, Shabeellaha
+                    Dhexe, and Jubbada Hoose. Mass distribution of insecticide-treated bed nets, indoor residual spraying,
+                    and uninterrupted supply of artemisinin-based combination therapies are urgent priorities.
                   </p>
                 </div>
                 <div>
-                  <h3 className="font-bold text-[#2BBCB2] text-lg mb-2">2. Address Malnutrition as a Cross-Cutting Driver</h3>
+                  <h3 className="font-bold text-[#2BBCB2] text-lg mb-2">2. Tackle Acute Respiratory Infections Urgently</h3>
                   <p className="text-gray-700 leading-relaxed">
-                    Malnutrition in Ethiopia and Somalia acts as a critical force multiplier — weakening immune systems and
-                    dramatically increasing susceptibility to infectious diseases. Therapeutic feeding programs, supplementary
-                    nutrition for children under five, and food security interventions must be integrated into health response plans.
+                    Acute respiratory infections appear as a critical threat across Sudan, Ethiopia's Afar and Somali regions,
+                    South Sudan, and Somalia, with risk scores of 85-90%. Overcrowded displacement camps, poor shelter, and
+                    cold nights make respiratory disease prevention a top priority alongside vector control.
                   </p>
                 </div>
                 <div>
-                  <h3 className="font-bold text-[#2BBCB2] text-lg mb-2">3. WASH Interventions are Critical in Active Conflict Zones</h3>
+                  <h3 className="font-bold text-[#2BBCB2] text-lg mb-2">3. WASH Interventions are Critical</h3>
                   <p className="text-gray-700 leading-relaxed">
-                    Waterborne diseases including cholera, dysentery, and typhoid fever are prominent across Sudan and South Sudan,
-                    reflecting the catastrophic collapse of water and sanitation infrastructure under active conflict. Emergency
-                    WASH interventions — water purification, latrine construction in displacement camps, and hygiene promotion —
-                    are essential to preventing mass outbreaks.
+                    Diarrheal diseases including cholera and dysentery are present at high risk levels across multiple regions
+                    in all four countries. Emergency WASH interventions — water purification, latrine construction in displacement
+                    camps, and hygiene promotion — are essential to preventing mass outbreaks.
                   </p>
                 </div>
                 <div>
-                  <h3 className="font-bold text-[#2BBCB2] text-lg mb-2">4. Mental Health Cannot Be Overlooked</h3>
+                  <h3 className="font-bold text-[#2BBCB2] text-lg mb-2">4. Address Malnutrition as a Force Multiplier</h3>
                   <p className="text-gray-700 leading-relaxed">
-                    Across all four countries, the psychological burden of conflict — PTSD, depression, grief, and trauma —
-                    represents a largely invisible health crisis. Community-based psychosocial support, training of community
-                    health workers in mental health first aid, and integration of mental health services into primary care
-                    are urgently needed.
+                    Malnutrition is particularly critical in Ethiopia's Somali region, Central Darfur, Northern Bahr el Ghazal,
+                    and Somalia's coastal regions. It weakens immune systems, dramatically increasing susceptibility to all
+                    other infectious diseases. Therapeutic feeding programs and food security interventions must be integrated
+                    into health response plans.
+                  </p>
+                </div>
+                <div>
+                  <h3 className="font-bold text-[#2BBCB2] text-lg mb-2">5. Sub-National Targeting is Essential</h3>
+                  <p className="text-gray-700 leading-relaxed">
+                    Regional analysis reveals the most critical hotspots: Khartoum, Afar, Central Darfur, North Darfur,
+                    North Kordofan, Somali Region of Ethiopia, Shabeellaha Dhexe, and Jubbada Hoose all show uniformly
+                    critical risk scores across multiple disease categories. Humanitarian response must move beyond
+                    country-level targeting to ensure resources reach the highest-risk communities.
                   </p>
                 </div>
               </div>
