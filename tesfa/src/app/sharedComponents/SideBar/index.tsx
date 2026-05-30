@@ -5,31 +5,40 @@ import { useRouter, usePathname } from "next/navigation";
 import { RiSidebarFoldLine } from "react-icons/ri";
 import { HiSquares2X2 } from "react-icons/hi2";
 import { LuClock3, LuClipboardList, LuUser, LuLogOut, LuChartBar } from "react-icons/lu";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import Image from "next/image";
 
 interface SidebarItemProps {
   icon: React.ReactNode;
   label: string;
   isOpen: boolean;
   active?: boolean;
-  path?: string;
   onClick?: () => void;
 }
 
 const SidebarItem = ({ icon, label, isOpen, active, onClick }: SidebarItemProps) => {
   return (
-    <div
-      className={`flex items-center gap-6 p-2 rounded-2xl cursor-pointer transition-colors
-      ${active ? "bg-active-gradient text-[00353D] font-semibold" : "hover:bg-teal-600"}`}
+    <button
       onClick={onClick}
+      title={label}
+      className={`w-full flex items-center gap-4 px-4 py-3 transition-all duration-200
+        text-sm font-medium border-none cursor-pointer rounded-lg
+        ${active
+          ? "bg-primary text-white"
+          : "text-gray-500 hover:bg-primary-light hover:text-primary-dark"
+        }`}
     >
-      <div className="flex justify-center w-8">{icon}</div>
+      <div className="flex justify-center w-6 shrink-0">{icon}</div>
       <span
-        className={`text-md transition-opacity duration-150 whitespace-nowrap
-          ${isOpen ? "opacity-100" : "opacity-0"}`}
+        className="whitespace-nowrap overflow-hidden transition-all duration-200 text-sm font-medium"
+        style={{
+          opacity: isOpen ? 1 : 0,
+          maxWidth: isOpen ? "10rem" : "0",
+        }}
       >
         {label}
       </span>
-    </div>
+    </button>
   );
 };
 
@@ -40,20 +49,24 @@ const LogoutConfirmModal = ({
   onCancel: () => void;
   onConfirm: () => void;
 }) => (
-  <div className="fixed inset-0 bg-black opacity-85 flex items-center justify-center z-[1000]">
-    <div className="bg-blue-50 p-10 rounded-lg shadow-lg max-w-xs w-full">
-      <h2 className="text-lg font-bold mb-2 text-[#2BBCB2]">Confirm Logout</h2>
-      <p className="mb-4 text-gray-700">Are you sure you want to logout?</p>
-      <div className="flex justify-end gap-4">
+  <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[1000]">
+    <div className="p-8 max-w-sm w-full bg-surface rounded-2xl shadow-2xl">
+      <h2 className="text-lg font-bold text-primary-dark mb-2">
+        Confirm Logout
+      </h2>
+      <p className="text-sm text-gray-500 mb-6">
+        Are you sure you want to logout?
+      </p>
+      <div className="flex justify-end gap-3">
         <button
           onClick={onCancel}
-          className="px-6 py-2 cursor-pointer rounded-2xl  bg-gray-200 hover:bg-gray-300 text-gray-800"
+          className="px-5 py-2.5 cursor-pointer transition-colors bg-surface-tertiary text-gray-500 rounded-lg text-sm font-medium"
         >
           Cancel
         </button>
         <button
           onClick={onConfirm}
-          className="px-6 py-2 cursor-pointer rounded-2xl bg-red-600 hover:bg-red-700 text-white"
+          className="px-5 py-2.5 cursor-pointer text-white transition-colors rounded-lg text-sm font-medium bg-red-600"
         >
           Logout
         </button>
@@ -63,7 +76,7 @@ const LogoutConfirmModal = ({
 );
 
 const Sidebar = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
   const router = useRouter();
@@ -75,14 +88,6 @@ const Sidebar = () => {
         setIsOpen(false);
       }
     };
-
-    if (typeof window !== "undefined") {
-      if (window.innerWidth >= 1024) {
-        setIsOpen(false);
-      } else {
-        setIsOpen(false);
-      }
-    }
 
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
@@ -107,111 +112,144 @@ const Sidebar = () => {
 
   return (
     <>
+      {/* Mobile toggle */}
       <div className="lg:hidden fixed top-4 left-4 z-50">
         <button
           data-testid="mobile-open-button"
-          className="p-2 rounded-md bg-[#2BBCB2] text-white hover:bg-teal-600 transition"
+          className="p-2.5 text-white transition-colors cursor-pointer rounded-lg bg-primary"
           onClick={() => setIsMobileOpen(true)}
         >
-          <RiSidebarFoldLine size={30} />
+          <RiSidebarFoldLine size={24} />
         </button>
       </div>
 
-      {isMobileOpen && (
-        <div
-          className="fixed inset-0 bg-opacity-50 z-40 lg:hidden"
-          onClick={() => setIsMobileOpen(false)}
-        ></div>
+      {/* Desktop expand button — sits on the right border of the collapsed sidebar */}
+      {!isOpen && (
+        <button
+          onClick={() => setIsOpen(true)}
+          className="hidden lg:flex fixed top-6 w-7 h-7 items-center justify-center shadow-sm border cursor-pointer transition-all z-[1170]
+                     bg-surface border-border text-primary rounded-full"
+          style={{ left: "calc(4.5rem - 0.875rem)" }}
+          title="Expand sidebar"
+          aria-label="Expand sidebar"
+        >
+          <ChevronRight size={16} />
+        </button>
       )}
 
-      <div
-        className={`fixed inset-y-0 left-0 z-50 h-screen rounded-4xl bg-[#2BBCB2] text-white flex flex-col justify-between transition-all duration-300
-        ${isMobileOpen ? "w-60 py-6 px-4" : "w-0 p-0 overflow-hidden"} 
-        lg:static lg:flex
-        ${isOpen ? "lg:w-60 lg:py-6 lg:px-4" : "lg:w-16 lg:px-2 lg:py-6"}`}
+      {/* Mobile backdrop */}
+      {isMobileOpen && (
+        <div
+          className="fixed inset-0 bg-black/40 backdrop-blur-sm z-40 lg:hidden transition-opacity"
+          onClick={() => setIsMobileOpen(false)}
+        />
+      )}
+
+      {/* Sidebar */}
+      <aside
+        className={`fixed inset-y-0 left-0 z-50 h-screen flex flex-col transition-all duration-300
+        ${isMobileOpen ? "w-64 py-6 px-3" : "w-0 p-0 overflow-hidden"}
+        lg:relative lg:flex
+        ${isOpen ? "lg:w-64 lg:py-6 lg:px-4" : "lg:w-[4.5rem] lg:py-6 lg:px-2"}`}
+        style={{
+          background: "var(--color-primary-light)",
+          borderRight: "1px solid var(--color-border)",
+        }}
       >
-        <div>
-          <div className="flex justify-between mb-20">
-            <button
-              data-testid="mobile-close-button"
-              className="flex items-center justify-center w-10 h-10 rounded-md hover:bg-teal-600 transition lg:hidden"
-              onClick={() => setIsMobileOpen(false)}
+        {/* Header row: logo + brand + toggle */}
+        <div className="flex items-center justify-between mb-10 px-2 shrink-0">
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 shrink-0 flex items-center justify-center">
+              <Image
+                src="/Images/Group 184.png"
+                alt="Tesfa"
+                width={36}
+                height={36}
+                className="rounded-full"
+              />
+            </div>
+            <span
+              className="font-bold whitespace-nowrap overflow-hidden transition-all duration-200 text-primary text-lg"
+              style={{
+                opacity: isOpen || isMobileOpen ? 1 : 0,
+                maxWidth: isOpen || isMobileOpen ? "10rem" : "0",
+              }}
             >
-              <RiSidebarFoldLine size={30} />
-            </button>
-            <button
-              data-testid="desktop-toggle-button"
-              className="hidden lg:flex items-center justify-center w-10 h-10 rounded-md hover:bg-teal-600 transition"
-              onClick={() => setIsOpen(!isOpen)}
-            >
-              <RiSidebarFoldLine size={30} />
-            </button>
+              Tesfa AI
+            </span>
           </div>
-          <nav className="flex flex-col gap-10">
-            <SidebarItem
-              icon={<HiSquares2X2 size={30} />}
-              label="Dashboard"
-              isOpen={isOpen || isMobileOpen}
-              active={pathname === "/dashboard" || pathname === "/"}
-              path="/dashboard"
-              onClick={() => handleNavigation("/dashboard")}
-            />
-            <SidebarItem
-              icon={<LuChartBar size={30} />}
-              label="Report"
-              isOpen={isOpen || isMobileOpen}
-              active={pathname === "/report"}
-              path="/report"
-              onClick={() => handleNavigation("/report")}
-            />
-            <SidebarItem
-              icon={<LuClipboardList size={30} />}
-              label="Interventions"
-              isOpen={isOpen || isMobileOpen}
-              active={pathname === "/tasks"}
-              path="/tasks"
-              onClick={() => handleNavigation("/tasks")}
-            />
-            <SidebarItem
-              icon={<LuClock3 size={30} />}
-              label="Tracker"
-              isOpen={isOpen || isMobileOpen}
-              active={pathname === "/kanban"}
-              path="/kanban"
-              onClick={() => handleNavigation("/kanban")}
-            />
-            <SidebarItem
-              icon={<LuUser size={30} />}
-              label="Profile"
-              isOpen={isOpen || isMobileOpen}
-              active={pathname === "/profile"}
-              path="/profile"
-              onClick={() => handleNavigation("/profile")}
-            />
-          </nav>
+          <button
+            data-testid="mobile-close-button"
+            className="lg:hidden flex items-center justify-center w-9 h-9 text-gray-400 hover:text-primary-dark hover:bg-primary/10 transition-colors cursor-pointer rounded-md"
+            onClick={() => setIsMobileOpen(false)}
+          >
+            <RiSidebarFoldLine size={22} />
+          </button>
+          <button
+            data-testid="desktop-toggle-button"
+            className="hidden lg:flex items-center justify-center w-9 h-9 text-gray-400 hover:text-primary-dark hover:bg-primary/10 transition-colors cursor-pointer rounded-md"
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            {isOpen ? <ChevronLeft size={22} /> : <ChevronRight size={22} />}
+          </button>
         </div>
-        <div className="flex flex-col">
-          <div className="mb-4">
+
+        {/* Navigation */}
+        <nav className="flex flex-col gap-1">
+          <SidebarItem
+            icon={<HiSquares2X2 size={20} />}
+            label="Dashboard"
+            isOpen={isOpen || isMobileOpen}
+            active={pathname === "/dashboard" || pathname === "/"}
+            onClick={() => handleNavigation("/dashboard")}
+          />
+          <SidebarItem
+            icon={<LuChartBar size={20} />}
+            label="Report"
+            isOpen={isOpen || isMobileOpen}
+            active={pathname === "/report"}
+            onClick={() => handleNavigation("/report")}
+          />
+          <SidebarItem
+            icon={<LuClipboardList size={20} />}
+            label="Interventions"
+            isOpen={isOpen || isMobileOpen}
+            active={pathname === "/tasks"}
+            onClick={() => handleNavigation("/tasks")}
+          />
+          <SidebarItem
+            icon={<LuClock3 size={20} />}
+            label="Tracker"
+            isOpen={isOpen || isMobileOpen}
+            active={pathname === "/kanban"}
+            onClick={() => handleNavigation("/kanban")}
+          />
+          <SidebarItem
+            icon={<LuUser size={20} />}
+            label="Profile"
+            isOpen={isOpen || isMobileOpen}
+            active={pathname === "/profile"}
+            onClick={() => handleNavigation("/profile")}
+          />
+        </nav>
+
+        {/* Spacer */}
+        <div className="flex-1" />
+
+        {/* Bottom section */}
+        <div className="flex flex-col shrink-0">
+          <div className="mb-2">
             <SidebarItem
-              icon={<LuLogOut size={30} />}
+              icon={<LuLogOut size={20} />}
               label="Logout"
               isOpen={isOpen || isMobileOpen}
-              active={pathname === ""}
+              active={false}
               onClick={handleLogoutClick}
             />
           </div>
-          {(isOpen || isMobileOpen) && (
-            <div className="px-2 pb-2 flex flex-col items-center">
-              <p className="text-white text-xs mb-1 opacity-70">Powered by</p>
-              <img
-                src="/Images/ona-insights-logo-long.svg"
-                alt="Ona Insights"
-                className="w-54 opacity-90"
-              />
-            </div>
-          )}
         </div>
-      </div>
+      </aside>
+
       {showLogoutConfirm &&
         typeof window !== "undefined" &&
         ReactDOM.createPortal(

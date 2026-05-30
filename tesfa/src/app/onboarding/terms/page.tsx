@@ -7,8 +7,8 @@ export default function TermsPage() {
   };
   return (
     <div className="min-h-screen bg-white flex items-center justify-center p-4">
-      <div className="w-full max-w-3xl bg-[#2BBCB2] text-white rounded-xl overflow-hidden shadow-2xl border border-[#F5A623]/30">
-        <div className="p-5 border-b border-[#F5A623]/30 flex justify-between items-center sticky top-0 bg-[#2BBCB2] z-10">
+      <div className="w-full max-w-3xl text-white rounded-xl overflow-hidden shadow-2xl bg-primary">
+        <div className="p-5 flex justify-between items-center sticky top-0 z-10 bg-primary border-b border-white/15">
           <h1 className="text-2xl md:text-3xl font-bold text-white">Terms and Conditions</h1>
           <button
             onClick={() => router.back()}
@@ -36,7 +36,7 @@ export default function TermsPage() {
             <p>When using Tesfa, you agree to:</p>
             <ul className="list-disc pl-5 space-y-1 mt-2">
               <li>Provide accurate information when creating or managing your account.</li>
-              <li>Use Tesfa’s tools and insights only for legitimate organizational or research purposes.</li>
+              <li>Use Tesfa's tools and insights only for legitimate organizational or research purposes.</li>
               <li>Keep your login details confidential and protect your account from unauthorized access.</li>
             </ul>
           </section>
@@ -49,7 +49,7 @@ export default function TermsPage() {
           <section className="mb-6">
             <h2 className="text-xl font-semibold text-white mb-2">5. Reports and Insights</h2>
             <p>
-              Tesfa provides insights, projections, and recommendations based on available data. While we strive for accuracy, our outputs are informational tools, not guaranteed results. Always validate insights with local data, expert judgment, and your organization’s policies before making decisions.
+              Tesfa provides insights, projections, and recommendations based on available data. While we strive for accuracy, our outputs are informational tools, not guaranteed results. Always validate insights with local data, expert judgment, and your organization's policies before making decisions.
             </p>
           </section>
           <section className="mb-6">
@@ -58,19 +58,19 @@ export default function TermsPage() {
             <ul className="list-disc pl-5 space-y-1 mt-2">
               <li>Use Tesfa for illegal, unethical, or harmful activities.</li>
               <li>Upload or share false, misleading, or confidential data without permission.</li>
-              <li>Attempt to interfere with or disrupt Tesfa’s systems, APIs, or security.</li>
+              <li>Attempt to interfere with or disrupt Tesfa's systems, APIs, or security.</li>
             </ul>
           </section>
           <section className="mb-6">
             <h2 className="text-xl font-semibold text-white mb-2">7. Limitation of Liability</h2>
             <p>
-              Tesfa is a decision-support tool. We’re not liable for any losses, damages, or decisions made based on Tesfa’s outputs or recommendations. We do our best to ensure the accuracy and reliability of data, but we can’t guarantee it will always be complete or error-free.
+              Tesfa is a decision-support tool. We're not liable for any losses, damages, or decisions made based on Tesfa's outputs or recommendations. We do our best to ensure the accuracy and reliability of data, but we can't guarantee it will always be complete or error-free.
             </p>
           </section>
           <section className="mb-6">
             <h2 className="text-xl font-semibold text-white mb-2">8. Changes to These Terms</h2>
             <p>
-              We may update these Terms from time to time. When we make significant changes, we’ll notify users through the platform or email. Continuing to use Tesfa after updates means you accept the new Terms.
+              We may update these Terms from time to time. When we make significant changes, we'll notify users through the platform or email. Continuing to use Tesfa after updates means you accept the new Terms.
             </p>
           </section>
           <section className="mb-6">
@@ -90,17 +90,17 @@ export default function TermsPage() {
               Nairobi, Kenya
             </p>
           </section>
-          <section className="pt-4 border-t border-[#F5A623]/30">
+          <section className="pt-4 border-t border-accent/30">
             <h3 className="text-lg font-semibold text-white">Privacy Tip</h3>
             <p className="mt-2">
               Always check your account settings and data permissions regularly. If you have any concerns about how your information is used, contact us immediately.
             </p>
           </section>
         </div>
-        <div className="p-4 border-t border-[#F5A623]/30 bg-[#2BBCB2] flex justify-end">
+        <div className="p-4 border-t border-accent/30 bg-primary flex justify-end">
           <button
             onClick={handleAgree}
-            className="px-5 py-2 cursor-pointer bg-[#F5A623] text-white font-bold rounded-lg hover:bg-[#E0B54A] transition"
+            className="px-5 py-2 cursor-pointer bg-accent text-primary-dark font-bold rounded-lg hover:bg-accent-hover transition"
           >
             Agree
           </button>

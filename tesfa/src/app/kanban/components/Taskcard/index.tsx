@@ -30,25 +30,6 @@ export function TaskCard({ task, index, onDelete }: TaskCardProps) {
     zIndex: isDragging ? 1 : 0,
   };
 
-  const getCardColor = (status: string) => {
-    switch (status) {
-      case 'tasks':
-        return 'bg-[#FFFF]'
-      case 'pending':
-        return 'bg-[#FFFF]'
-      case 'in_progress':
-        return 'bg-[#FFFF]'
-      case 'in-progress':
-        return 'bg-[#FFFF]'
-      case 'cancelled':
-        return 'bg-[#FFFF]'
-      case 'completed':
-        return 'bg-[#FFFF]'
-      default:
-        return 'bg-[#FFFF]'
-    }
-  };
-
   return (
     <>
     <motion.div
@@ -69,12 +50,14 @@ export function TaskCard({ task, index, onDelete }: TaskCardProps) {
           <LuTrash2 size={16}/>
         </button>
 
-      <div className={`${getCardColor(task.status)} border-none rounded-2xl h-auto p-3 sm:p-4 mb-3 shadow-lg hover:shadow-xl transition-shadow w-full`}>
+      <div
+        className="border-none rounded-2xl h-auto p-3 sm:p-4 mb-3 shadow-lg hover:shadow-xl transition-shadow w-full bg-surface"
+      >
        <div {...listeners} {...attributes} className="w-full">
         <div className="space-y-1 sm:space-y-2">
-          <h4 className="font-semibold text-lg sm:text-xl text-black">{task.title}</h4>
+          <h4 className="font-semibold text-lg sm:text-xl text-gray-900">{task.title}</h4>
           {task.description && (
-            <p className="text-base sm:text-lg text-gray-900">{task.description}</p>
+            <p className="text-base sm:text-lg text-gray-500">{task.description}</p>
           )}
         </div>
         </div>

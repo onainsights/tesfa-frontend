@@ -7,7 +7,7 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContaine
 
 const COLORS = {
   teal: '#2BBCB2',
-  yellow: '#F5A623',
+  yellow: '#FFC342',
   red: '#E8543A',
   salmon: '#BA6D58',
   dark: '#00353D',
@@ -279,9 +279,9 @@ export default function ReportPage() {
   return (
     <ProtectedRoute>
       <Layout>
-        <div className="bg-gray-50 overflow-y-auto h-screen">
+        <div className="bg-surface-secondary overflow-y-auto h-screen">
           {/* Hero Header */}
-          <div className="bg-[#2BBCB2] text-white px-8 py-12">
+          <div className="bg-primary text-white px-8 py-12">
             <div className="max-w-6xl mx-auto">
               <h1 className="text-4xl font-bold mb-4">Health Risk Analysis Report</h1>
               <p className="text-white text-lg max-w-3xl leading-relaxed">
@@ -305,7 +305,7 @@ export default function ReportPage() {
 
             {/* Executive Summary */}
             <section>
-              <h2 className="text-2xl font-bold text-[#00353D] mb-4">Executive Summary</h2>
+              <h2 className="text-2xl font-bold text-primary-dark mb-4">Executive Summary</h2>
               <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
                 <p className="text-gray-700 leading-relaxed text-base mb-4">
                   This report presents Tesfa's AI-generated health risk assessments for four conflict-affected countries in East Africa:
@@ -329,7 +329,7 @@ export default function ReportPage() {
 
             {/* Key Statistics */}
             <section>
-              <h2 className="text-2xl font-bold text-[#00353D] mb-4">Key Statistics</h2>
+              <h2 className="text-2xl font-bold text-primary-dark mb-4">Key Statistics</h2>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 <StatCard title="Countries Assessed" value={4} subtitle="East Africa region" color={COLORS.teal} />
                 <StatCard title="Regions Assessed" value={16} subtitle="Sub-national level" color={COLORS.teal} />
@@ -340,7 +340,7 @@ export default function ReportPage() {
 
             {/* Average Risk by Country */}
             <section>
-              <h2 className="text-2xl font-bold text-[#00353D] mb-2">Average Risk Score by Country</h2>
+              <h2 className="text-2xl font-bold text-primary-dark mb-2">Average Risk Score by Country</h2>
               <p className="text-gray-500 mb-6">Composite health risk score averaged across all assessed diseases per country.</p>
               <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
                 <ResponsiveContainer width="100%" height={300}>
@@ -361,7 +361,7 @@ export default function ReportPage() {
 
             {/* Risk Level Distribution */}
             <section>
-              <h2 className="text-2xl font-bold text-[#00353D] mb-2">Risk Level Distribution</h2>
+              <h2 className="text-2xl font-bold text-primary-dark mb-2">Risk Level Distribution</h2>
               <p className="text-gray-500 mb-6">Distribution of high, medium, and low risk assessments across all countries and diseases.</p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
@@ -401,7 +401,7 @@ export default function ReportPage() {
 
             {/* Most Common Diseases */}
             <section>
-              <h2 className="text-2xl font-bold text-[#00353D] mb-2">Most Prevalent Diseases Across the Region</h2>
+              <h2 className="text-2xl font-bold text-primary-dark mb-2">Most Prevalent Diseases Across the Region</h2>
               <p className="text-gray-500 mb-6">Diseases appearing most frequently across all four country assessments.</p>
               <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
                 <ResponsiveContainer width="100%" height={280}>
@@ -423,7 +423,7 @@ export default function ReportPage() {
 
             {/* Country + Region Deep Dives */}
             <section>
-              <h2 className="text-2xl font-bold text-[#00353D] mb-2">Country & Regional Analysis</h2>
+              <h2 className="text-2xl font-bold text-primary-dark mb-2">Country & Regional Analysis</h2>
               <p className="text-gray-500 mb-6">Detailed health risk breakdown at country and sub-national level.</p>
 
               <div className="flex gap-2 mb-6 flex-wrap">
@@ -499,7 +499,7 @@ export default function ReportPage() {
 
                     {/* Regional breakdown */}
                     <div className="border-t border-gray-100 pt-8">
-                      <h4 className="text-lg font-bold text-[#00353D] mb-2">Regional Breakdown — {country.name}</h4>
+                      <h4 className="text-lg font-bold text-primary-dark mb-2">Regional Breakdown — {country.name}</h4>
                       <p className="text-gray-500 text-sm mb-5">Select a region to view its AI-generated health risk assessment.</p>
 
                       <div className="flex gap-2 mb-6 flex-wrap">
@@ -562,10 +562,10 @@ export default function ReportPage() {
 
             {/* Conclusions */}
             <section>
-              <h2 className="text-2xl font-bold text-[#00353D] mb-4">Conclusions & Recommendations</h2>
+              <h2 className="text-2xl font-bold text-primary-dark mb-4">Conclusions & Recommendations</h2>
               <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 space-y-6">
                 <div>
-                  <h3 className="font-bold text-[#2BBCB2] text-lg mb-2">1. Prioritize Malaria Control Across the Region</h3>
+                  <h3 className="font-bold text-primary text-lg mb-2">1. Prioritize Malaria Control Across the Region</h3>
                   <p className="text-gray-700 leading-relaxed">
                     Malaria consistently appears as a high-risk disease across virtually all assessed regions, with scores
                     reaching 95% in Khartoum, Afar, Central Darfur, North Darfur, North Kordofan, Somali Region, Shabeellaha
@@ -574,7 +574,7 @@ export default function ReportPage() {
                   </p>
                 </div>
                 <div>
-                  <h3 className="font-bold text-[#2BBCB2] text-lg mb-2">2. Tackle Acute Respiratory Infections Urgently</h3>
+                  <h3 className="font-bold text-primary text-lg mb-2">2. Tackle Acute Respiratory Infections Urgently</h3>
                   <p className="text-gray-700 leading-relaxed">
                     Acute respiratory infections appear as a critical threat across Sudan, Ethiopia's Afar and Somali regions,
                     South Sudan, and Somalia, with risk scores of 85-90%. Overcrowded displacement camps, poor shelter, and
@@ -582,7 +582,7 @@ export default function ReportPage() {
                   </p>
                 </div>
                 <div>
-                  <h3 className="font-bold text-[#2BBCB2] text-lg mb-2">3. WASH Interventions are Critical</h3>
+                  <h3 className="font-bold text-primary text-lg mb-2">3. WASH Interventions are Critical</h3>
                   <p className="text-gray-700 leading-relaxed">
                     Diarrheal diseases including cholera and dysentery are present at high risk levels across multiple regions
                     in all four countries. Emergency WASH interventions — water purification, latrine construction in displacement
@@ -590,7 +590,7 @@ export default function ReportPage() {
                   </p>
                 </div>
                 <div>
-                  <h3 className="font-bold text-[#2BBCB2] text-lg mb-2">4. Address Malnutrition as a Force Multiplier</h3>
+                  <h3 className="font-bold text-primary text-lg mb-2">4. Address Malnutrition as a Force Multiplier</h3>
                   <p className="text-gray-700 leading-relaxed">
                     Malnutrition is particularly critical in Ethiopia's Somali region, Central Darfur, Northern Bahr el Ghazal,
                     and Somalia's coastal regions. It weakens immune systems, dramatically increasing susceptibility to all
@@ -599,7 +599,7 @@ export default function ReportPage() {
                   </p>
                 </div>
                 <div>
-                  <h3 className="font-bold text-[#2BBCB2] text-lg mb-2">5. Sub-National Targeting is Essential</h3>
+                  <h3 className="font-bold text-primary text-lg mb-2">5. Sub-National Targeting is Essential</h3>
                   <p className="text-gray-700 leading-relaxed">
                     Regional analysis reveals the most critical hotspots: Khartoum, Afar, Central Darfur, North Darfur,
                     North Kordofan, Somali Region of Ethiopia, Shabeellaha Dhexe, and Jubbada Hoose all show uniformly

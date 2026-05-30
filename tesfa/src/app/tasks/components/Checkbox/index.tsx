@@ -16,15 +16,7 @@ export function Checkbox({ checked, onCheckedChange}: CheckboxProps) {
         className="hidden"
       />
       <div
-        style={{
-          width: 20,
-          height: 20,
-          borderRadius: 100,
-          backgroundColor: checked ? "#D3AC45" : "#D1D5DB", 
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
+        className={`w-5 h-5 rounded-full flex items-center justify-center ${checked ? 'bg-accent-muted' : 'bg-border'}`}
       >
         {checked && (
           <svg

@@ -6,7 +6,7 @@ import Image from "next/image";
 
 export default function SplashScreen() {
   const router = useRouter();
-  
+
   useEffect(() => {
     const timer = setTimeout(() => {
       router.push("/onboarding/welcome");
@@ -16,28 +16,28 @@ export default function SplashScreen() {
   }, [router]);
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-[#fdf6f6] text-center px-4 py-8">
+    <div className="flex flex-col items-center justify-center h-screen text-center px-4 py-8 bg-surface-secondary">
 
       <Image
-        src="/Images/Group66.png" 
+        src="/Images/Group66.png"
         alt="Logo"
         width={400}
         height={200}
         className="mb-26 w-48 md:w-100 h-auto object-contain"
       />
-     
-      <p className="text-xl md:text-5xl font-medium text-[#2BBCB2] leading-relaxed italic">
+
+      <p className="text-xl md:text-5xl font-medium leading-relaxed italic text-primary">
         The essence of{" "}
-        <span className="font-semibold text-[#F5A623]">hope</span> and{" "}
-        <span className="font-semibold text-[#F5A623]">renewal</span> after
+        <span className="font-semibold text-accent">hope</span> and{" "}
+        <span className="font-semibold text-accent">renewal</span> after
         hardship
       </p>
-     
+
       <div className="mt-8 w-100 mx-auto">
-        <div className="h-1 w-full bg-gradient-to-r from-transparent via-[#F5A623] to-transparent mb-10"></div>
+        <div className="h-1 w-full mb-10 bg-gradient-to-r from-transparent via-accent to-transparent"></div>
       </div>
       <div className="fixed bottom-6 left-0 right-0 flex flex-col items-center gap-1">
-  <p className="text-gray-500 text-s">A Demo by:</p>
+  <p className="text-gray-500 text-xs">A Demo by:</p>
   <Image
     src="/Images/Ona Insights Logo - black .png"
     alt="Ona Insights"
@@ -49,9 +49,3 @@ export default function SplashScreen() {
     </div>
   );
 }
-
-
-
-
-
-

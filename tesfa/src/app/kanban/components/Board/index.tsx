@@ -23,10 +23,10 @@ import Loader from '@/app/sharedComponents/Loader';
 
 
 const columns = [
-  { id: "pending", title: 'New', color: 'bg-[#F5A623]' },
-  { id: "in_progress", title: 'In Review', color: 'bg-[#F5A623]' },
-  { id: 'cancelled', title: 'In Progress', color: 'bg-[#F5A623]' },
-  { id: 'completed', title: 'Completed', color: 'bg-[#F5A623]' },
+  { id: "pending", title: 'New' },
+  { id: "in_progress", title: 'In Review' },
+  { id: 'cancelled', title: 'In Progress' },
+  { id: 'completed', title: 'Completed' },
 ];
 
 
@@ -95,7 +95,7 @@ export default function KanbanBoard() {
     }
     try{
       await deleteTaskAssignment(taskToDelete.assignmentId)
-    
+
     setAssignedTasks((prevTasks) => prevTasks.filter((task) => task.id !== taskId))
   } catch{
     console.error("Failed to delete task assignment:", error)
@@ -114,26 +114,25 @@ export default function KanbanBoard() {
 
   if (error) {
     return (
-      <div className="p-6 min-h-screen bg-gray-50 flex justify-center items-center">
+      <div className="p-6 min-h-screen flex justify-center items-center bg-surface-secondary">
         <p className="text-red-600">Something went Wrong, Please reload your page</p>
       </div>
     )
   }
 
 
-  
   return (
-    <DndContext 
-      sensors={sensors} 
-      collisionDetection={closestCenter} 
+    <DndContext
+      sensors={sensors}
+      collisionDetection={closestCenter}
       onDragStart={handleDragStart}
       onDragEnd={handleDragEnd}
     >
-      <div className="p-10 xl:px-10 xl:py-20 bg-gray-50 md:overflow-hidden relative">
-        <div className="flex items-center justify-between  lg:mb-3">
-          <h1 className="text-4xl font-semibold text-[#2BBCB2]">Recommended Interventions Tracking</h1>
+      <div className="p-10 xl:px-10 xl:py-20 md:overflow-hidden relative bg-surface-secondary">
+        <div className="flex items-center justify-between lg:mb-3">
+          <h1 className="text-3xl sm:text-4xl font-semibold text-primary">Recommended Interventions Tracking</h1>
         </div>
-        <div className="h-1.5 bg-[#2BBCB2] opacity-50 xl:mb-10 lg:mb-5"></div>
+        <div className="h-1.5 opacity-50 xl:mb-10 lg:mb-5 bg-primary"></div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-10 h-[68vh]">
           {columns.map((column) => (
             <motion.div
@@ -141,18 +140,18 @@ export default function KanbanBoard() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="bg-[#E7EDEE] rounded-lg shadow-sm lg:overflow-hidden sm:overflow-scroll sm:h-[100vh]"
+              className="rounded-lg shadow-sm lg:overflow-hidden sm:overflow-scroll sm:h-[100vh] bg-surface-muted"
             >
-              <div className={`${column.color} px-4 py-3 rounded-tl-[20px] rounded-tr-[20px]`}>
-                <h3 className="text-xl font-semibold text-center text-black">{column.title}</h3>
+              <div className="px-4 py-3 bg-accent rounded-t-2xl">
+                <h3 className="text-xl font-semibold text-center text-primary-dark">{column.title}</h3>
               </div>
-              <DropZone id={column.id} className="p-4 min-h-[40vh] h-[80vh] overflow-y-scroll no-scrollbar bg-gray-100 relative">
+              <DropZone id={column.id} className="p-4 min-h-[40vh] h-[80vh] overflow-y-scroll no-scrollbar relative bg-surface">
                 <div className="space-y-3">
                   {getTasksByStatus(column.id as Task['status']).map((task, index) => (
                     <TaskCard key={task.id} task={task} index={index} onDelete={handleDeleteTask} />
                   ))}
                   {getTasksByStatus(column.id as Task['status']).length === 0 && (
-                    <div className="text-center text-gray-500 py-8">
+                    <div className="text-center py-8 text-gray-400">
                       Drop tasks here
                     </div>
                   )}
@@ -168,4 +167,3 @@ export default function KanbanBoard() {
     </DndContext>
   )
 }
-

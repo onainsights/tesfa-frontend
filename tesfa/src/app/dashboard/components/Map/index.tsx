@@ -203,10 +203,13 @@ const MapClient = () => {
       )}
       {hoveredFeature && !showLoaderOverlay && (
         <div
-          className="absolute bg-[#D3AC45] text-gray-900 p-4 rounded-lg shadow-lg max-w-xs z-[1000] pointer-events-none"
-          style={{ left: mousePosition.x + 10, top: mousePosition.y + 10 }}
+          className="absolute max-w-xs z-[1000] pointer-events-none bg-accent text-primary-dark p-4 rounded-xl shadow-lg"
+          style={{
+            left: mousePosition.x + 10,
+            top: mousePosition.y + 10,
+          }}
         >
-          <h3 className="font-bold">
+          <h3 className="font-bold text-sm">
             {isCountry(hoveredFeature.properties)
               ? hoveredFeature.properties.countries_name
               : isRegion(hoveredFeature.properties)
@@ -220,25 +223,25 @@ const MapClient = () => {
               if (info?.description) {
                 return (
                   <>
-                    <p>{info.description}</p>
+                    <p className="leading-relaxed">{info.description}</p>
                     {(!risks || risks.length === 0) ? (
-                      <p>No health risks in this area.</p>
+                      <p className="mt-2 opacity-80">No health risks in this area.</p>
                     ) : (
-                      <table className="mt-2 text-xs border-collapse border border-gray-400 w-full">
+                      <table className="mt-2 text-xs w-full border-collapse">
                         <thead>
-                          <tr className="bg-gray-200">
-                            <th className="border px-1">Disease</th>
-                            <th className="border px-1">Risk Level</th>
-                            <th className="border px-1">Risk %</th>
+                          <tr className="bg-black/10">
+                            <th className="px-2 py-1 text-left rounded-l-sm">Disease</th>
+                            <th className="px-2 py-1 text-left">Risk Level</th>
+                            <th className="px-2 py-1 text-right rounded-r-sm">Risk %</th>
                           </tr>
                         </thead>
                         <tbody>
                           {risks.map((item, i) => (
                             typeof item === 'object' && item ? (
-                              <tr key={i} className="even:bg-gray-100">
-                                <td className="border px-1">{(item as DiseaseRisk).disease_name || 'Unknown'}</td>
-                                <td className="border px-1">{(item as DiseaseRisk).risk_level || 'Unknown'}</td>
-                                <td className="border px-1 text-right">
+                              <tr key={i} className={i % 2 === 0 ? "bg-transparent" : "bg-black/5"}>
+                                <td className="px-2 py-1">{(item as DiseaseRisk).disease_name || 'Unknown'}</td>
+                                <td className="px-2 py-1">{(item as DiseaseRisk).risk_level || 'Unknown'}</td>
+                                <td className="px-2 py-1 text-right">
                                   {typeof (item as DiseaseRisk).risk_score === 'number'
                                     ? `${(item as DiseaseRisk).risk_score}%`
                                     : typeof (item as DiseaseRisk).risk_percent === 'number'
@@ -247,8 +250,8 @@ const MapClient = () => {
                                 </td>
                               </tr>
                             ) : (
-                              <tr key={i} className="even:bg-gray-100">
-                                <td className="border px-1" colSpan={3}>{String(item)}</td>
+                              <tr key={i}>
+                                <td className="px-2 py-1" colSpan={3}>{String(item)}</td>
                               </tr>
                             )
                           ))}
@@ -258,7 +261,7 @@ const MapClient = () => {
                   </>
                 );
               }
-              if (!risks || risks.length === 0) return <p>No health risks in this area.</p>;
+              if (!risks || risks.length === 0) return <p className="opacity-80">No health risks in this area.</p>;
               return risks.map((item, i) =>
                 typeof item === 'object' && item ? (
                   <p key={i}>
@@ -273,9 +276,11 @@ const MapClient = () => {
           </div>
         </div>
       )}
-      <div className="absolute bottom-10 right-15 z-[1150] bg-[#2BBCB2] text-white text-lg px-3 py-2 rounded-lg shadow-md font-medium">
-          Training data cutoff: 2025
-        </div>
+      <div
+        className="absolute bottom-10 right-16 z-[1150] text-sm px-4 py-2 font-medium bg-primary text-white rounded-lg shadow-md"
+      >
+        Training data cutoff: 2025
+      </div>
       </div>
   );
 };

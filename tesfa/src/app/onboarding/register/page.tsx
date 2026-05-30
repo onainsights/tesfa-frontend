@@ -8,7 +8,7 @@ export default function RegisterPage({
   searchParams: Promise<{ agreed?: string }>;
 }) {
   return (
-    <div className="flex flex-col md:flex-row items-center justify-center min-h-screen bg-[#FDF6F6] px-4 md:px-12 py-8">
+    <div className="flex flex-col md:flex-row items-center justify-center min-h-screen bg-surface-secondary px-4 md:px-12 py-8">
       <div className="flex flex-col md:flex-row items-center gap-x-50 max-w-screen-xl w-full mx-auto">
         <div className="flex flex-row items-center justify-center gap-6 mb-8 md:mb-0">
           <Image

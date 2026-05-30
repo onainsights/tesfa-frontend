@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 const config: Config = {
@@ -10,7 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["var(--font-josefin-sans)"],
+        sans: ["var(--font-mulish)", "Mulish", "sans-serif"],
       },
     },
   },

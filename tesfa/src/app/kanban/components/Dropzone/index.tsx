@@ -5,24 +5,23 @@ interface DropZoneProps {
   id: string;
   children: React.ReactNode;
   className?: string;
+  style?: React.CSSProperties;
 }
 
-export function DropZone({ id, children, className = '' }: DropZoneProps) {
+export function DropZone({ id, children, className = '', style }: DropZoneProps) {
   const { isOver, setNodeRef } = useDroppable({
     id,
   });
 
-  
   const baseClasses = 'rounded-md transition-all duration-200 ease-in-out';
-  const overClasses = 'bg-blue-100';
-  
+
   return (
     <div
       ref={setNodeRef}
-      className={`${baseClasses} ${isOver ? overClasses : 'bg-transparent' } ${className}`}
+      className={`${baseClasses} ${isOver ? 'bg-primary-light' : 'bg-transparent'} ${className}`}
     >
       {children}
     </div>
   );
-  
+
 }
