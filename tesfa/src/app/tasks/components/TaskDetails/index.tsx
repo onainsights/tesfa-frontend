@@ -131,7 +131,7 @@ return (
         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4 w-full sm:w-auto">
           {isVisible && (
             <p className="text-sm sm:text-xs md:text-sm text-center sm:text-left text-gray-500">
-              Click &quot;Select Tasks&quot; to start choosing tasks from the
+              Click &quot;Select &quot; to start choosing interventions from the
               list. ➤
             </p>
           )}
@@ -140,7 +140,7 @@ return (
               onClick={handleClick}
               className="text-white px-4 sm:px-6 py-2 rounded-full cursor-pointer w-full sm:w-auto bg-primary"
             >
-              Select Tasks
+              Select
             </Button>
           )}
         </div>
@@ -268,7 +268,7 @@ return (
               disabled={selectedTasks.size === 0}
               className="text-white px-4 sm:px-6 py-2 rounded-full disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer w-full sm:w-auto bg-primary"
             >
-              Add ({selectedTasks.size}) to my tasks
+              Add ({selectedTasks.size}) to my tracker
             </Button>
           </div>
         )}
