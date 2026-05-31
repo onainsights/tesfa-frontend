@@ -26,7 +26,7 @@ export default function SplashScreen() {
         className="mb-26 w-48 md:w-100 h-auto object-contain"
       />
 
-      <p className="text-xl md:text-5xl font-medium leading-relaxed italic text-primary">
+      <p className="text-xl md:text-3xl font-medium leading-relaxed italic text-primary">
         The essence of{" "}
         <span className="font-semibold text-accent">hope</span> and{" "}
         <span className="font-semibold text-accent">renewal</span> after

@@ -71,12 +71,26 @@ export default function AIAssistantPanel() {
   const [sending, setSending] = useState<boolean>(false);
   const [messages, setMessages] = useState<Message[]>([]);
   const [greeted, setGreeted] = useState<boolean>(false);
+  const [showSuggestions, setShowSuggestions] = useState<boolean>(false);
+
+  const suggestions = [
+    "Which regions in East Africa face the highest maternal mortality risk due to conflict?",
+    "How has healthcare access deteriorated in Tigray since the war?",
+    "What infectious disease outbreaks are linked to displacement camps in Somalia?",
+    "Compare malnutrition rates in active vs. post-conflict zones in South Sudan",
+    "What mental health burden is expected in northern Ethiopia over the next 5 years?",
+  ];
 
   useEffect(() => {
     const saved = localStorage.getItem("chatHistory");
     if (saved) {
-      setMessages(JSON.parse(saved));
+      const parsed = JSON.parse(saved);
+      setMessages(parsed);
       setGreeted(true);
+      const hasConversation = parsed.some((msg: Message) => !isGreeting(msg));
+      if (!hasConversation) {
+        setShowSuggestions(true);
+      }
     }
   }, []);
 
@@ -90,17 +104,24 @@ export default function AIAssistantPanel() {
     if (open && !greeted && messages.length === 0) {
       const greeting: Message = {
         id: uniqueId(),
-        text: "Hi, I'm Tesfa AI — I provide health risk assessments for conflict-affected regions in East Africa. Ask me about disease risks, recommended interventions, or general health topics related to conflict zones.",
+        text: "Hi, I'm Tesfa AI — I provide health risk assessments for conflict-affected regions in East Africa.",
         sender: "bot",
       };
       setMessages([greeting]);
       setGreeted(true);
+      setShowSuggestions(true);
     }
   }, [open, greeted, messages.length]);
 
-  const handleSend = useCallback(async () => {
-    if (!input.trim() || sending) return;
-    const queryText = input;
+  const handleSuggestionClick = (question: string) => {
+    setInput(question);
+    setShowSuggestions(false);
+    setTimeout(() => {
+      handleSendWithText(question);
+    }, 0);
+  };
+
+  const handleSendWithText = useCallback(async (queryText: string) => {
     setInput("");
     setSending(true);
     setMessages((prev) =>
@@ -139,17 +160,24 @@ export default function AIAssistantPanel() {
     } finally {
       setSending(false);
     }
-  }, [input, sending, submitQuery]);
+  }, [submitQuery]);
+
+  const handleSend = useCallback(async () => {
+    if (!input.trim() || sending) return;
+    setShowSuggestions(false);
+    await handleSendWithText(input);
+  }, [input, sending, handleSendWithText]);
 
   const handleReset = () => {
     const greeting: Message = {
       id: uniqueId(),
-      text: "Hi, I'm Tesfa AI — I provide health risk assessments for conflict-affected regions in East Africa. Ask me about disease risks, recommended interventions, or general health topics related to conflict zones.",
+      text: "Hi, I'm Tesfa AI — I provide health risk assessments for conflict-affected regions in East Africa.",
       sender: "bot",
     };
     setMessages([greeting]);
     localStorage.setItem("chatHistory", JSON.stringify([greeting]));
     setGreeted(true);
+    setShowSuggestions(true);
   };
 
   const handleDownload = () => {
@@ -266,6 +294,20 @@ export default function AIAssistantPanel() {
                   )}
                 </div>
               ))}
+              {showSuggestions && (
+                <div className="flex flex-col gap-2 px-1">
+                  <p className="text-xs text-gray-400 font-medium uppercase tracking-wide">Try asking</p>
+                  {suggestions.map((q, i) => (
+                    <button
+                      key={i}
+                      onClick={() => handleSuggestionClick(q)}
+                      className="text-left px-4 py-2.5 text-sm text-primary-dark bg-surface border border-border rounded-xl hover:border-primary hover:bg-primary-light transition-all cursor-pointer"
+                    >
+                      {q}
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
 
             {/* Input bar */}

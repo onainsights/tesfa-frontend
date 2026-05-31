@@ -263,7 +263,7 @@ const avgRiskByCountry = countryData.map(c => ({
 const StatCard = ({ title, value, subtitle, color }: { title: string; value: string | number; subtitle: string; color: string }) => (
   <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
     <p className="text-sm text-gray-500 font-medium uppercase tracking-wide">{title}</p>
-    <p className="text-4xl font-bold mt-1" style={{ color }}>{value}</p>
+    <p className="text-3xl font-bold mt-1" style={{ color }}>{value}</p>
     <p className="text-sm text-gray-400 mt-1">{subtitle}</p>
   </div>
 );
@@ -283,7 +283,7 @@ export default function ReportPage() {
           {/* Hero Header */}
           <div className="bg-primary text-white px-8 py-12">
             <div className="max-w-6xl mx-auto">
-              <h1 className="text-4xl font-bold mb-4">Health Risk Analysis Report</h1>
+              <h1 className="text-3xl font-bold mb-4">Health Risk Analysis Report</h1>
               <p className="text-white text-lg max-w-3xl leading-relaxed">
                 A comprehensive AI-generated analysis of long-term health risks across conflict-affected regions in East Africa.
                 This report synthesizes predictions from Sudan, Ethiopia, South Sudan, and Somalia based on historical conflict data,

@@ -130,7 +130,7 @@ export default function KanbanBoard() {
     >
       <div className="p-10 xl:px-10 xl:py-20 md:overflow-hidden relative bg-surface-secondary">
         <div className="flex items-center justify-between lg:mb-3">
-          <h1 className="text-3xl sm:text-4xl font-semibold text-primary">Recommended Interventions Tracking</h1>
+          <h1 className="text-2xl sm:text-3xl font-semibold text-primary">Recommended Interventions Tracking</h1>
         </div>
         <div className="h-1.5 opacity-50 xl:mb-10 lg:mb-5 bg-primary"></div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-10 h-[68vh]">
@@ -143,7 +143,7 @@ export default function KanbanBoard() {
               className="rounded-lg shadow-sm lg:overflow-hidden sm:overflow-scroll sm:h-[100vh] bg-surface-muted"
             >
               <div className="px-4 py-3 bg-accent rounded-t-2xl">
-                <h3 className="text-xl font-semibold text-center text-primary-dark">{column.title}</h3>
+                <h3 className="text-lg font-semibold text-center text-primary-dark">{column.title}</h3>
               </div>
               <DropZone id={column.id} className="p-4 min-h-[40vh] h-[80vh] overflow-y-scroll no-scrollbar relative bg-surface">
                 <div className="space-y-3">

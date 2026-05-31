@@ -110,7 +110,7 @@ export default function TasksDetails() {
 return (
     <div className="p-4 sm:p-6 md:p-8 lg:px-10 lg:py-25">
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
-        <h1 className="text-3xl sm:text-4xl font-semibold text-primary">
+        <h1 className="text-2xl sm:text-3xl font-semibold text-primary">
           Recommended Interventions
         </h1>
         <div className="relative w-full sm:w-auto mt-0 sm:mt-0">
@@ -198,7 +198,7 @@ return (
                   </span>
                 </div>
                 <div className="flex-1 min-w-0">
-                  <p className="text-xl sm:text-lg truncate text-gray-900">
+                  <p className="text-base sm:text-lg truncate text-gray-900">
                     {task.title}
                   </p>
                 </div>

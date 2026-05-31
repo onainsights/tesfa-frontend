@@ -26,12 +26,12 @@ export default function WelcomeScreen() {
 
 
         <div className="text-left max-w-md">
-          <h1 className="text-4xl md:text-7xl font-normal mb-15 relative text-center text-accent">
+          <h1 className="text-3xl md:text-5xl font-normal mb-15 relative text-center text-accent">
             Welcome
             <span className="absolute left-0 -bottom-1 w-full h-[3px] bg-gradient-to-r from-transparent via-accent to-transparent"></span>
           </h1>
 
-          <p className="font-light md:text-4xl leading-relaxed mb-8 text-center text-primary">
+          <p className="font-light md:text-2xl leading-relaxed mb-8 text-center text-primary">
             By restoring health and safety, we help bring happiness and brighter futures to those who need it most.
           </p>
 

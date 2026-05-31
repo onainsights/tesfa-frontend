@@ -120,7 +120,7 @@ export default function RegisterForm({
 
   return (
     <div className="md:w-1/2 text-left max-w-md">
-      <h2 className="text-xl md:text-5xl font-semibold text-accent mb-6 relative inline-block">
+      <h2 className="text-xl md:text-4xl font-semibold text-accent mb-6 relative inline-block">
         Create Account
         <span className="absolute left-0 -bottom-1 w-full h-[2px] bg-gradient-to-r from-transparent via-accent to-transparent"></span>
       </h2>
@@ -129,7 +129,7 @@ export default function RegisterForm({
         <div>
           <label
             htmlFor="organization"
-            className="block text-2xl font-light text-primary mb-1"
+            className="block text-lg font-light text-primary mb-1"
           >
             Organization name
           </label>
@@ -153,7 +153,7 @@ export default function RegisterForm({
         <div>
           <label
             htmlFor="email"
-            className="block text-2xl font-light text-primary mb-1"
+            className="block text-lg font-light text-primary mb-1"
           >
             Email
           </label>
@@ -172,7 +172,7 @@ export default function RegisterForm({
         <div className="relative">
           <label
             htmlFor="password"
-            className="block text-2xl font-light text-primary mb-1"
+            className="block text-lg font-light text-primary mb-1"
           >
             Password
           </label>
@@ -208,7 +208,7 @@ export default function RegisterForm({
         <div className="relative">
           <label
             htmlFor="confirmPassword"
-            className="block text-2xl font-light text-primary mb-1"
+            className="block text-lg font-light text-primary mb-1"
           >
             Confirm password
           </label>

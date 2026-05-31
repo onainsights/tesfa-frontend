@@ -31,7 +31,7 @@ export default function ProfilePage() {
     <Layout>
       <div className="flex flex-col w-full items-center h-screen overflow-y-auto bg-surface-secondary">
         <div className="w-full px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 mt-8 xl:mt-25 mb-12">
-          <h1 className="text-3xl sm:text-4xl font-semibold mb-2 text-primary">
+          <h1 className="text-2xl sm:text-3xl font-semibold mb-2 text-primary">
             Profile
           </h1>
           <div className="w-full h-[6px] rounded bg-primary-dark opacity-40" />
@@ -103,10 +103,10 @@ export default function ProfilePage() {
                   <div className="flex flex-col sm:flex-row items-start mt-25 sm:items-center gap-3 w-full">
                     <UserIcon className="w-7 h-7 text-accent" />
                     <div className="flex flex-col sm:flex-row sm:items-center sm:gap-5">
-                      <p className="text-lg sm:text-xl font-light text-primary-dark/70">
+                      <p className="text-base sm:text-lg font-light text-primary-dark/70">
                         Organization name:
                       </p>
-                      <p className="text-lg sm:text-xl font-medium break-words text-primary-dark">
+                      <p className="text-base sm:text-lg font-medium break-words text-primary-dark">
                         {profile.org_name}
                       </p>
                     </div>
@@ -115,10 +115,10 @@ export default function ProfilePage() {
                   <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 w-full">
                     <Mail className="w-7 h-7 text-accent" />
                     <div className="flex flex-col sm:flex-row sm:items-center sm:gap-36">
-                      <p className="text-lg sm:text-xl font-light text-primary-dark/70">
+                      <p className="text-base sm:text-lg font-light text-primary-dark/70">
                         Email:
                       </p>
-                      <p className="text-lg sm:text-xl font-medium break-words text-primary-dark">
+                      <p className="text-base sm:text-lg font-medium break-words text-primary-dark">
                         {profile.email}
                       </p>
                     </div>
@@ -126,10 +126,10 @@ export default function ProfilePage() {
                   <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 w-full">
                     <Calendar className="w-7 h-7 text-accent" />
                     <div className="flex flex-col sm:flex-row sm:items-center sm:gap-9">
-                      <p className="text-lg sm:text-xl font-light text-primary-dark/70">
+                      <p className="text-base sm:text-lg font-light text-primary-dark/70">
                         Registration Date:
                       </p>
-                      <p className="text-lg sm:text-xl font-medium text-primary-dark">
+                      <p className="text-base sm:text-lg font-medium text-primary-dark">
                         {formatDate(profile.created_at)}
                       </p>
                     </div>
@@ -137,10 +137,10 @@ export default function ProfilePage() {
                   <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 w-full">
                     <ShieldCheck className="w-7 h-7 text-accent" />
                     <div className="flex flex-col sm:flex-row sm:items-center sm:gap-11">
-                      <p className="text-lg sm:text-xl font-light text-primary-dark/70">
+                      <p className="text-base sm:text-lg font-light text-primary-dark/70">
                         Tasks Completed:
                       </p>
-                      <p className="text-lg sm:text-xl font-medium text-primary-dark">
+                      <p className="text-base sm:text-lg font-medium text-primary-dark">
                         {completedTasks.length}/{totalTasks} Tasks
                       </p>
                     </div>

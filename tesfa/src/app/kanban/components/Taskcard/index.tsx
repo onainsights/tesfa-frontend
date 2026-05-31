@@ -55,9 +55,9 @@ export function TaskCard({ task, index, onDelete }: TaskCardProps) {
       >
        <div {...listeners} {...attributes} className="w-full">
         <div className="space-y-1 sm:space-y-2">
-          <h4 className="font-semibold text-lg sm:text-xl text-gray-900">{task.title}</h4>
+          <h4 className="font-semibold text-base sm:text-lg text-gray-900">{task.title}</h4>
           {task.description && (
-            <p className="text-base sm:text-lg text-gray-500">{task.description}</p>
+            <p className="text-sm sm:text-base text-gray-500">{task.description}</p>
           )}
         </div>
         </div>

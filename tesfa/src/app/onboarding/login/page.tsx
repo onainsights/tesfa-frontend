@@ -58,14 +58,14 @@ export default function LoginPage() {
           />
         </div>
         <div className="md:w-1/2 text-left max-w-md">
-          <h2 className="text-xl md:text-5xl text-center font-semibold mb-8 relative text-accent">
+          <h2 className="text-xl md:text-4xl text-center font-semibold mb-8 relative text-accent">
             Welcome Back!
             <span className="absolute left-0 -bottom-1 w-full h-[2px] bg-gradient-to-r from-transparent via-accent to-transparent"></span>
           </h2>
-          <p className="text-4xl font-normal text-center text-primary">Login</p>
+          <p className="text-2xl font-normal text-center text-primary">Login</p>
           <form onSubmit={handleSubmit} className="space-y-5 mt-15 text-gray-900">
             <div>
-              <label htmlFor="email" className="block text-2xl font-light mb-1 text-primary">
+              <label htmlFor="email" className="block text-lg font-light mb-1 text-primary">
                 Email
               </label>
               <input
@@ -80,7 +80,7 @@ export default function LoginPage() {
               />
             </div>
             <div className="relative">
-              <label htmlFor="password" className="block text-2xl font-light mb-1 text-primary">
+              <label htmlFor="password" className="block text-lg font-light mb-1 text-primary">
                 Password
               </label>
               <input
