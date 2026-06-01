@@ -65,7 +65,7 @@ export default function ResetFormClient({ uid, token }: { uid: string; token: st
             <div className="relative">
               <input
                 type={show1 ? "text" : "password"}
-                className="w-full px-4 py-3 rounded-xl text-black bg-white/90 placeholder-gray-600 outline-none"
+                className="w-full px-4 py-3 rounded-xl text-black bg-surface/90 placeholder-gray-600 outline-none"
                 placeholder="New Password"
                 value={password}
                 onChange={(e) => {
@@ -98,7 +98,7 @@ export default function ResetFormClient({ uid, token }: { uid: string; token: st
             <div className="relative">
               <input
                 type={show2 ? "text" : "password"}
-                className="w-full px-4 py-3 rounded-xl text-black bg-white/90 placeholder-gray-600 outline-none"
+                className="w-full px-4 py-3 rounded-xl text-black bg-surface/90 placeholder-gray-600 outline-none"
                 placeholder="Confirm New Password"
                 value={confirm}
                 onChange={(e) => {

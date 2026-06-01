@@ -8,11 +8,11 @@ export default function MapTitleCard() {
 
   return (
     <div className="absolute top-6 left-6 z-[1150] max-w-sm">
-      <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg p-5">
+      <div className="bg-surface/90 backdrop-blur-sm rounded-2xl shadow-lg p-5">
         <h1 className="text-2xl font-bold text-accent-muted leading-tight">
           East Africa Health Risk Outlook
         </h1>
-        <p className="text-sm text-gray-500 mt-2 leading-relaxed">
+        <p className="text-base text-primary-dark/70 mt-2 leading-relaxed font-medium">
           What are the long-term health risks in conflict-affected regions?
         </p>
         <button

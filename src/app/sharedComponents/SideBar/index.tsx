@@ -175,7 +175,7 @@ const Sidebar = () => {
                 maxWidth: isOpen || isMobileOpen ? "10rem" : "0",
               }}
             >
-              Tesfa AI
+              Tesfa
             </span>
           </div>
           <button

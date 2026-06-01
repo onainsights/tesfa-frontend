@@ -6,7 +6,7 @@ export default function TermsPage() {
     router.push("/onboarding/register?agreed=true");
   };
   return (
-    <div className="min-h-screen bg-white flex items-center justify-center p-4">
+    <div className="min-h-screen bg-surface flex items-center justify-center p-4">
       <div className="w-full max-w-3xl bg-gray-50 text-gray-800 rounded-xl overflow-hidden shadow-lg border border-gray-200">
         <div className="p-5 border-b border-gray-200 flex justify-between items-center sticky top-0 bg-gray-50 z-10">
           <h1 className="text-2xl md:text-3xl font-semibold text-gray-800">Terms and Conditions</h1>

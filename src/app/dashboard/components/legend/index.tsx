@@ -6,7 +6,7 @@ export default function MapLegend() {
     { color: "bg-primary-dark", label: "Not covered yet" },
   ];
   return (
-    <div className="absolute z-[1150] bottom-6 left-6 p-5 shadow-lg bg-white/90 backdrop-blur-sm rounded-2xl min-w-[14rem]">
+    <div className="absolute z-[1150] bottom-6 left-6 p-5 shadow-lg bg-surface/90 backdrop-blur-sm rounded-2xl min-w-[14rem]">
       <h3 className="font-semibold mb-4 text-sm tracking-wide uppercase text-gray-500">
         Key
       </h3>

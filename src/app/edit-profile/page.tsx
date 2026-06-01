@@ -100,13 +100,13 @@ export default function EditProfilePage() {
         <main className="relative flex flex-col items-center bg-[#FCF6F7] min-h-screen overflow-y-scroll">
         
           {(loading && !submitting) && (
-            <div className="absolute inset-0 flex items-center justify-center bg-white bg-opacity-75 z-50">
+            <div className="absolute inset-0 flex items-center justify-center bg-surface bg-opacity-75 z-50">
               <Loader />
             </div>
           )}
 
           {error && (
-            <div className="absolute inset-0 flex items-center justify-center bg-white bg-opacity-90 z-50">
+            <div className="absolute inset-0 flex items-center justify-center bg-surface bg-opacity-90 z-50">
               <div className="flex justify-center items-center text-center text-red-500 w-full">
                 {error}
               </div>
@@ -123,7 +123,7 @@ export default function EditProfilePage() {
             <div className="flex flex-col lg:flex-row items-center justify-center gap-10 w-full max-w-4xl">
      
               <div className="relative flex flex-col items-center">
-                <div className="w-[200px] h-[200px] rounded-full border-4 border-[#C3A041] flex items-center justify-center overflow-hidden bg-white">
+                <div className="w-[200px] h-[200px] rounded-full border-4 border-[#C3A041] flex items-center justify-center overflow-hidden bg-surface">
                   {logoImage ? (
                     <Image
                       src={URL.createObjectURL(logoImage)}
@@ -159,7 +159,7 @@ export default function EditProfilePage() {
                   onClick={() =>
                     document.getElementById("logoInput")?.click()
                   }
-                  className="absolute top-40 cursor-pointer right-5 bg-white border-2 border-[#C3A041] text-[#C3A041] w-10 h-10 rounded-full flex items-center justify-center shadow hover:bg-[#F3FBFD] transition"
+                  className="absolute top-40 cursor-pointer right-5 bg-surface border-2 border-[#C3A041] text-[#C3A041] w-10 h-10 rounded-full flex items-center justify-center shadow hover:bg-[#F3FBFD] transition"
                   aria-label="Upload logo"
                 >
                   <CameraIcon className="w-5 h-5 cursor-pointer" />
@@ -180,12 +180,12 @@ export default function EditProfilePage() {
                   {formData.org_name || "NGO"}
                 </div>
                 {showSuccess && (
-                  <div className="mt-6 bg-white border border-green-600 text-green-700 px-6 py-3 rounded-xl shadow-lg text-lg font-bold text-center">
+                  <div className="mt-6 bg-surface border border-green-600 text-green-700 px-6 py-3 rounded-xl shadow-lg text-lg font-bold text-center">
                     Successfully updated!
                   </div>
                 )}
                 {updateStatus === "error" && (
-                  <div className="mt-6 bg-white text-red-700 px-6 py-3 rounded-xl text-lg font-semibold text-center">
+                  <div className="mt-6 bg-surface text-red-700 px-6 py-3 rounded-xl text-lg font-semibold text-center">
                     {updateMessage}
                   </div>
                 )}

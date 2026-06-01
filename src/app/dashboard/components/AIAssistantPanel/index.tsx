@@ -236,7 +236,7 @@ export default function AIAssistantPanel() {
               </div>
               <button
                 onClick={() => setOpen(false)}
-                className="p-2 hover:bg-white/10 transition-colors cursor-pointer rounded-md"
+                className="p-2 hover:bg-surface/10 transition-colors cursor-pointer rounded-md"
                 aria-label="Close panel"
               >
                 <X size={20} />

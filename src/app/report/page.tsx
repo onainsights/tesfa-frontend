@@ -261,7 +261,7 @@ const avgRiskByCountry = countryData.map(c => ({
 }));
 
 const StatCard = ({ title, value, subtitle, color }: { title: string; value: string | number; subtitle: string; color: string }) => (
-  <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+  <div className="bg-surface rounded-2xl p-6 shadow-sm border border-gray-100">
     <p className="text-sm text-gray-500 font-medium uppercase tracking-wide">{title}</p>
     <p className="text-3xl font-bold mt-1" style={{ color }}>{value}</p>
     <p className="text-sm text-gray-400 mt-1">{subtitle}</p>
@@ -306,7 +306,7 @@ export default function ReportPage() {
             {/* Executive Summary */}
             <section>
               <h2 className="text-2xl font-bold text-primary-dark mb-4">Executive Summary</h2>
-              <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+              <div className="bg-surface rounded-2xl p-8 shadow-sm border border-gray-100">
                 <p className="text-gray-700 leading-relaxed text-base mb-4">
                   This report presents Tesfa's AI-generated health risk assessments for four conflict-affected countries in East Africa:
                   Sudan, Ethiopia, South Sudan, and Somalia. All four countries are experiencing severe humanitarian crises driven by
@@ -342,7 +342,7 @@ export default function ReportPage() {
             <section>
               <h2 className="text-2xl font-bold text-primary-dark mb-2">Average Risk Score by Country</h2>
               <p className="text-gray-500 mb-6">Composite health risk score averaged across all assessed diseases per country.</p>
-              <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+              <div className="bg-surface rounded-2xl p-6 shadow-sm border border-gray-100">
                 <ResponsiveContainer width="100%" height={300}>
                   <BarChart data={avgRiskByCountry} margin={{ top: 10, right: 20, left: 0, bottom: 0 }}>
                     <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
@@ -364,7 +364,7 @@ export default function ReportPage() {
               <h2 className="text-2xl font-bold text-primary-dark mb-2">Risk Level Distribution</h2>
               <p className="text-gray-500 mb-6">Distribution of high, medium, and low risk assessments across all countries and diseases.</p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+                <div className="bg-surface rounded-2xl p-6 shadow-sm border border-gray-100">
                   <ResponsiveContainer width="100%" height={260}>
                     <PieChart>
                       <Pie data={riskDistribution} cx="50%" cy="50%" outerRadius={100} dataKey="value" label={({ name, value }) => `${name}: ${value}`}>
@@ -376,7 +376,7 @@ export default function ReportPage() {
                     </PieChart>
                   </ResponsiveContainer>
                 </div>
-                <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 flex flex-col justify-center gap-4">
+                <div className="bg-surface rounded-2xl p-6 shadow-sm border border-gray-100 flex flex-col justify-center gap-4">
                   {riskDistribution.map((item, i) => (
                     <div key={i} className="flex items-center gap-4">
                       <div className="w-4 h-4 rounded-full flex-shrink-0" style={{ backgroundColor: item.color }} />
@@ -403,7 +403,7 @@ export default function ReportPage() {
             <section>
               <h2 className="text-2xl font-bold text-primary-dark mb-2">Most Prevalent Diseases Across the Region</h2>
               <p className="text-gray-500 mb-6">Diseases appearing most frequently across all four country assessments.</p>
-              <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+              <div className="bg-surface rounded-2xl p-6 shadow-sm border border-gray-100">
                 <ResponsiveContainer width="100%" height={280}>
                   <BarChart data={topDiseases} layout="vertical" margin={{ top: 0, right: 30, left: 140, bottom: 0 }}>
                     <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" horizontal={false} />
@@ -431,7 +431,7 @@ export default function ReportPage() {
                   <button
                     key={i}
                     onClick={() => setActiveCountry(i)}
-                    className={`px-5 py-2 rounded-full text-sm font-medium transition-all ${activeCountry === i ? 'text-white shadow-md' : 'bg-white text-gray-600 border border-gray-200 hover:border-gray-300'}`}
+                    className={`px-5 py-2 rounded-full text-sm font-medium transition-all ${activeCountry === i ? 'text-white shadow-md' : 'bg-surface text-gray-600 border border-gray-200 hover:border-gray-300'}`}
                     style={activeCountry === i ? { backgroundColor: c.color } : {}}
                   >
                     {c.name}
@@ -442,7 +442,7 @@ export default function ReportPage() {
 
               {countryData.map((country, i) => (
                 <div key={i} className={activeCountry === i ? 'block' : 'hidden'}>
-                  <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+                  <div className="bg-surface rounded-2xl p-8 shadow-sm border border-gray-100">
                     {/* Country header */}
                     <div className="flex items-start justify-between mb-6">
                       <div>
@@ -563,7 +563,7 @@ export default function ReportPage() {
             {/* Conclusions */}
             <section>
               <h2 className="text-2xl font-bold text-primary-dark mb-4">Conclusions & Recommendations</h2>
-              <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 space-y-6">
+              <div className="bg-surface rounded-2xl p-8 shadow-sm border border-gray-100 space-y-6">
                 <div>
                   <h3 className="font-bold text-primary text-lg mb-2">1. Prioritize Malaria Control Across the Region</h3>
                   <p className="text-gray-700 leading-relaxed">
@@ -612,7 +612,7 @@ export default function ReportPage() {
 
             {/* Footer */}
             <div className="text-center text-sm text-gray-400 py-8 border-t border-gray-200">
-              <p>Generated by Tesfa AI Health Intelligence Platform • Training data cutoff: 2025</p>
+              <p>Generated by Tesfa Health Intelligence Platform • Data coverage: 2000–2025</p>
               <p className="mt-1">A Demo by Ona Insights</p>
             </div>
 

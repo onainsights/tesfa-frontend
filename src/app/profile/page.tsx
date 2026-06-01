@@ -58,7 +58,7 @@ export default function ProfilePage() {
               {!loading && profile && (
                 <>
                   <div
-                    className="w-[150px] sm:w-[180px] h-[150px] sm:h-[180px] absolute rounded-full border-4 border-accent flex items-center justify-center overflow-hidden bg-white"
+                    className="w-[150px] sm:w-[180px] h-[150px] sm:h-[180px] absolute rounded-full border-4 border-accent flex items-center justify-center overflow-hidden bg-surface"
                   >
                     {profile.logo_image ? (
                       <Image
@@ -83,7 +83,7 @@ export default function ProfilePage() {
                   </div>
                   <button
                     onClick={() => router.push("/edit-profile")}
-                    className="absolute top-55 cursor-pointer right-55 w-9 h-9 bg-white border border-accent rounded-full flex items-center justify-center shadow transition"
+                    className="absolute top-55 cursor-pointer right-55 w-9 h-9 bg-surface border border-accent rounded-full flex items-center justify-center shadow transition"
                     aria-label="Edit Profile"
                     type="button"
                   >

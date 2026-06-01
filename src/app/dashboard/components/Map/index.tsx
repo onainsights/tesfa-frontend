@@ -197,7 +197,7 @@ const MapClient = () => {
         onMouseMove={e => setMousePosition({ x: e.clientX, y: e.clientY })}
       />
       {showLoaderOverlay && (
-        <div className="absolute inset-0 flex items-center justify-center z-[999] pointer-events-none bg-white/20">
+        <div className="absolute inset-0 flex items-center justify-center z-[999] pointer-events-none bg-surface/20">
           <Loader />
         </div>
       )}
@@ -279,7 +279,7 @@ const MapClient = () => {
       <div
         className="absolute bottom-10 right-16 z-[1150] text-sm px-4 py-2 font-medium bg-primary text-white rounded-lg shadow-md"
       >
-        Training data cutoff: 2025
+        Data coverage: 2000–2025
       </div>
       </div>
   );
