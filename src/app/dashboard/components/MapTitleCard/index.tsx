@@ -1,11 +1,11 @@
 "use client";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Info } from "lucide-react";
-
+import { Info, ExternalLink } from "lucide-react";
+import { useRouter } from "next/navigation";
 export default function MapTitleCard() {
   const [expanded, setExpanded] = useState(false);
-
+  const router = useRouter();
   return (
     <div className="absolute top-6 left-6 z-[1150] max-w-sm">
       <div className="bg-surface/90 backdrop-blur-sm rounded-2xl shadow-lg p-5">
@@ -15,16 +15,24 @@ export default function MapTitleCard() {
         <p className="text-base text-primary-dark/70 mt-2 leading-relaxed font-medium">
           What are the long-term health risks in conflict-affected regions?
         </p>
-        <button
-          onClick={() => setExpanded(!expanded)}
-          className={`flex items-center gap-1.5 mt-3 text-xs font-medium transition-colors cursor-pointer ${
-            expanded ? "text-primary" : "text-gray-400 hover:text-primary"
-          }`}
-        >
-          <Info size={14} />
-          {expanded ? "Hide methodology" : "How this works"}
-        </button>
-
+        <div className="flex items-center gap-4 mt-3">
+          <button
+            onClick={() => setExpanded(!expanded)}
+            className={`flex items-center gap-1.5 text-xs font-medium transition-colors cursor-pointer ${
+              expanded ? "text-primary" : "text-gray-400 hover:text-primary"
+            }`}
+          >
+            <Info size={14} />
+            {expanded ? "Hide details" : "How this works"}
+          </button>
+          <button
+            onClick={() => router.push("/methodology")}
+            className="flex items-center gap-1.5 text-xs font-medium text-gray-400 hover:text-primary transition-colors cursor-pointer"
+          >
+            <ExternalLink size={14} />
+            View methodology
+          </button>
+        </div>
         <AnimatePresence>
           {expanded && (
             <motion.div

@@ -311,7 +311,8 @@ export default function AIAssistantPanel() {
             </div>
 
             {/* Input bar */}
-            <div className="p-4 shrink-0 border-t border-border-light bg-surface">
+            <div className="px-4 pt-3 pb-1 shrink-0 border-t border-border-light bg-surface">
+              
               <div className="relative">
                 <input
                   value={input}
@@ -333,6 +334,9 @@ export default function AIAssistantPanel() {
                   <Send size={18} className="transform rotate-35" />
                 </button>
               </div>
+              <p className="text-xs text-primary-dark/40 text-center mb-2">
+    Tesfa AI can make mistakes. Please double-check responses.
+  </p>
             </div>
           </motion.aside>
         )}
