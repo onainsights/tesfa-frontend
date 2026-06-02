@@ -1,0 +1,174 @@
+@import "tailwindcss";
+
+/* ============================================================
+   Design System — Premium Health & Wellness
+   Surfaces dominate (60%), Primary teal for structure (30%),
+   Accent gold reserved for CTAs and attention (10%).
+
+   All tokens under @theme become Tailwind utility classes:
+     bg-primary, text-primary-dark, border-accent, etc.
+   ============================================================ */
+
+/* ---- Tailwind v4 Theme — generates utility classes ---- */
+@theme {
+  /* Surface / Neutral (60%) */
+  --color-surface: #FFFFFF;
+  --color-surface-secondary: #F8FAFA;
+  --color-surface-tertiary: #F1F5F5;
+  --color-surface-muted: #E7EDEE;
+
+  /* Primary Teal (30%) — structural color */
+  --color-primary: #2BBCB2;
+  --color-primary-hover: #1A9E96;
+  --color-primary-light: #F3FBFD;
+  --color-primary-dark: #00353D;
+  --color-primary-deep: #011D1F;
+
+  /* Accent Gold (10%) — CTAs & attention only */
+  --color-accent: #FFC342;
+  --color-accent-hover: #E5B02B;
+  --color-accent-muted: #D4A828;
+
+  /* Border */
+  --color-border: #E5E7EB;
+  --color-border-light: #F3F4F6;
+
+  /* Consistent corner radii — overrides Tailwind defaults */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.625rem;
+  --radius-lg: 0.875rem;
+  --radius-xl: 1.25rem;
+  --radius-2xl: 1.5rem;
+  --radius-3xl: 1.75rem;
+  --radius-4xl: 2rem;
+
+  /* Font */
+  --font-sans: "Mulish", sans-serif;
+  --font-mono: var(--font-geist-mono);
+}
+
+/* ---- CSS-only tokens (not theme utilities) ---- */
+:root {
+  --color-text-on-primary: #FFFFFF;
+}
+
+/* ---- Base ---- */
+body {
+  background: var(--color-surface);
+  color: var(--color-surface);
+  font-family: "Mulish", sans-serif;
+  overflow-y: hidden;
+}
+
+input:focus {
+  outline: none;
+}
+
+/* ---- Gradients ---- */
+.bg-active-gradient {
+  background: linear-gradient(to right, var(--color-accent), var(--color-accent-hover));
+}
+
+/* ---- Scrollbar ---- */
+*::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+  margin-left: 5px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #F1F1F1;
+  border-radius: 10px;
+  margin-left: 5px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--color-accent-muted);
+  border-radius: 10px;
+  border: 3px solid #F1F1F1;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-accent-muted);
+}
+
+/* ---- Animations ---- */
+.animate-fade-in {
+  animation: fadeInScale 0.4s;
+}
+
+@keyframes fadeInScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.recharts-wrapper:focus,
+.recharts-surface:focus,
+.recharts-wrapper:focus-visible,
+.recharts-surface:focus-visible {
+  outline: none !important;
+}
+
+@keyframes move-rays {
+  0% { transform: translateX(0); }
+  50% { transform: translateX(10px); }
+  100% { transform: translateX(0); }
+}
+
+.rays {
+  animation: move-rays 2s ease-in-out infinite;
+}
+
+@keyframes draw-path {
+  0% { stroke-dasharray: 0, 100; }
+  100% { stroke-dasharray: 100, 0; }
+}
+
+.svg-logo {
+  animation: rotate-logo 5s linear infinite, neon-glow 2s infinite alternate;
+  transform-origin: center;
+}
+
+.svg-logo path {
+  fill: none;
+  stroke: var(--color-primary-dark);
+  stroke-width: 2;
+  stroke-dasharray: 0, 100;
+  animation: draw-path 3s ease-in-out forwards;
+}
+
+@keyframes dashed-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+}
+
+.dashed-spinner {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  border: 4px dashed var(--color-accent);
+  border-radius: 50%;
+  animation: dashed-spin 3s linear infinite;
+  margin-top: 27px;
+}
+
+.svg-logo {
+  position: absolute;
+  transform-origin: center;
+  animation: rotate-logo 5s linear infinite, neon-glow 2s infinite alternate;
+}
