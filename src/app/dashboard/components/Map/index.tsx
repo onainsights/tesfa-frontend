@@ -277,7 +277,7 @@ const MapClient = () => {
         </div>
       )}
       <div
-        className="absolute bottom-10 right-16 z-[1150] text-sm px-4 py-2 font-medium bg-none text-white rounded-lg shadow-md"
+        className="absolute bottom-10 right-16 z-[1150] text-sm px-4 py-2 font-medium bg-white text-black rounded-lg shadow-md"
       >
         Data coverage: 2000–2025
       </div>

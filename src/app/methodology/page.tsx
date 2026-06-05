@@ -51,6 +51,116 @@ const CountryRow = ({ country, status, regions, color }: { country: string; stat
   </tr>
 );
 
+const tooltips: Record<string, string> = {
+  'WHO / UNHCR': 'Disease surveillance, health bulletins, displacement data, and nutrition assessments from WHO and UNHCR field reports.',
+  'Conflict records': 'Epidemiological data collected during and after armed conflict, including disease incidence and mortality rates in conflict zones.',
+  'Academic research': 'Peer-reviewed studies on the health consequences of armed conflict, displacement, and healthcare system collapse (2000–2025).',
+  'Supabase vector DB': 'Over 105,000 document embeddings stored using Supabase pgvector. Enables fast semantic similarity search across the knowledge base.',
+  'Query formation': 'A health risk assessment query is formulated for a specific country or region — e.g. "What are the health risks in Khartoum, Sudan?"',
+  'BioGPT retrieval': 'BioGPT searches the vector database for the most relevant conflict health documents and returns them as context for the language model.',
+  'RAG context': 'Retrieved documents are combined with the original query to form an augmented prompt — grounding the AI response in real data.',
+  'Ollama / gemma3:27b': 'The augmented prompt is passed to gemma3:27b which generates structured JSON predictions including disease names, risk scores, and recommendations.',
+  'Map dashboard': 'Predictions are displayed as color-coded countries and regions on the interactive Leaflet map, with hover tooltips showing disease data.',
+  'Report page': 'The AI synthesises predictions into a full Health Risk Analysis Report with charts, regional breakdowns, and recommendations.',
+  'Chat interface': 'Users can ask follow-up questions about predictions. The chat is grounded to the same conflict health data and supported regions.',
+};
+
+function DiagramNode({
+  x, y, width, height, label, color, textColor,
+}: {
+  x: number; y: number; width: number; height: number;
+  label: string; color: string; textColor: string; tooltip: string;
+}) {
+  return (
+    <g>
+      <rect
+        x={x} y={y} width={width} height={height} rx={8}
+        fill={color} stroke="rgba(0,0,0,0.12)" strokeWidth={0.8}
+      />
+      <text
+        x={x + width / 2} y={y + height / 2}
+        textAnchor="middle" dominantBaseline="central"
+        fontSize={12} fontWeight={600} fill={textColor}
+      >
+        {label}
+      </text>
+    </g>
+  );
+}
+
+function DataJourneyDiagram() {
+  const teal = '#2BBCB2';
+  const blue = '#3B82F6';
+  const purple = '#7C3AED';
+  const coral = '#E8543A';
+  const gray = '#6B7280';
+  const white = '#FFFFFF';
+  const dark = '#00353D';
+
+  return (
+    <div className="w-full overflow-x-auto">
+      <svg width="100%" viewBox="0 0 660 500" style={{ minWidth: 500, overflow: 'visible' }}>
+        <defs>
+          <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M2 1L8 5L2 9" fill="none" stroke="#9CA3AF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+          </marker>
+        </defs>
+
+        {/* Section labels */}
+        <text x="330" y="22" textAnchor="middle" fontSize={12} fill="#9CA3AF" fontWeight={900}>Data sources</text>
+        <text x="330" y="192" textAnchor="middle" fontSize={12} fill="#9CA3AF" fontWeight={900}>Knowledge base</text>
+        <text x="330" y="282" textAnchor="middle" fontSize={12} fill="#9CA3AF" fontWeight={900}>AI pipeline</text>
+        <text x="330" y="432" textAnchor="middle" fontSize={12} fill="#9CA3AF" fontWeight={900}>Outputs</text>
+
+        {/* Row 1: Sources */}
+        <DiagramNode x={20} y={30} width={140} height={40} label="WHO / UNHCR" color={blue} textColor={white} tooltip={tooltips['WHO / UNHCR']} />
+        <DiagramNode x={260} y={30} width={140} height={40} label="Conflict records" color={blue} textColor={white} tooltip={tooltips['Conflict records']} />
+        <DiagramNode x={500} y={30} width={140} height={40} label="Academic research" color={blue} textColor={white} tooltip={tooltips['Academic research']} />
+
+        {/* Arrows: sources → vector DB */}
+        <line x1="90" y1="70" x2="270" y2="200" stroke="#9CA3AF" strokeWidth={0.8} markerEnd="url(#arr)" fill="none"/>
+        <line x1="330" y1="70" x2="330" y2="200" stroke="#9CA3AF" strokeWidth={0.8} markerEnd="url(#arr)"/>
+        <line x1="570" y1="70" x2="390" y2="200" stroke="#9CA3AF" strokeWidth={0.8} markerEnd="url(#arr)" fill="none"/>
+
+        {/* Row 2: Vector DB */}
+        <DiagramNode x={200} y={200} width={260} height={52} label="Supabase vector DB" color={teal} textColor={white} tooltip={tooltips['Supabase vector DB']} />
+        
+
+        {/* Arrow: vector DB → RAG context row */}
+        <line x1="330" y1="252" x2="330" y2="290" stroke="#9CA3AF" strokeWidth={0.8} markerEnd="url(#arr)"/>
+
+        {/* Row 3: Query + RAG + BioGPT */}
+        <DiagramNode x={20} y={290} width={140} height={40} label="Query formation" color={gray} textColor={white} tooltip={tooltips['Query formation']} />
+        <DiagramNode x={260} y={290} width={140} height={40} label="RAG context" color={dark} textColor={white} tooltip={tooltips['RAG context']} />
+        <DiagramNode x={500} y={290} width={140} height={40} label="BioGPT retrieval" color={purple} textColor={white} tooltip={tooltips['BioGPT retrieval']} />
+
+        {/* Arrows between pipeline nodes */}
+        <line x1="160" y1="310" x2="258" y2="310" stroke="#9CA3AF" strokeWidth={0.8} markerEnd="url(#arr)"/>
+        <line x1="400" y1="310" x2="498" y2="310" stroke="#9CA3AF" strokeWidth={0.8} markerEnd="url(#arr)"/>
+
+        {/* Arrows: RAG + BioGPT → Ollama */}
+        <line x1="330" y1="330" x2="330" y2="368" stroke="#9CA3AF" strokeWidth={0.8} markerEnd="url(#arr)"/>
+        <line x1="570" y1="330" x2="430" y2="368" stroke="#9CA3AF" strokeWidth={0.8} markerEnd="url(#arr)" fill="none"/>
+
+        {/* Row 4: Ollama */}
+        <DiagramNode x={200} y={368} width={260} height={52} label="Ollama / gemma3:27b" color={coral} textColor={white} tooltip={tooltips['Ollama / gemma3:27b']} />
+        
+
+        {/* Arrows: Ollama → outputs */}
+        <line x1="220" y1="420" x2="110" y2="442" stroke="#9CA3AF" strokeWidth={0.8} markerEnd="url(#arr)" fill="none"/>
+        <line x1="330" y1="420" x2="330" y2="442" stroke="#9CA3AF" strokeWidth={0.8} markerEnd="url(#arr)"/>
+        <line x1="450" y1="420" x2="550" y2="442" stroke="#9CA3AF" strokeWidth={0.8} markerEnd="url(#arr)" fill="none"/>
+
+        {/* Row 5: Outputs */}
+        <DiagramNode x={20} y={442} width={160} height={40} label="Map dashboard" color={teal} textColor={white} tooltip={tooltips['Map dashboard']} />
+        <DiagramNode x={250} y={442} width={160} height={40} label="Report page" color={teal} textColor={white} tooltip={tooltips['Report page']} />
+        <DiagramNode x={480} y={442} width={160} height={40} label="Chat interface" color={teal} textColor={white} tooltip={tooltips['Chat interface']} />
+      </svg>
+      
+    </div>
+  );
+}
+
 export default function MethodologyPage() {
   const [limitationsOpen, setLimitationsOpen] = useState(false);
 
@@ -59,13 +169,11 @@ export default function MethodologyPage() {
       <Layout>
         <div className="bg-surface-secondary overflow-y-auto h-screen">
 
-          {/* Header — no background, consistent with page */}
           <div className="max-w-4xl mx-auto px-8 pt-10 pb-2">
             <h1 className="text-3xl font-bold mb-3 text-primary-dark">Methodology & Technical Documentation</h1>
             <p className="text-primary-dark text-base leading-relaxed max-w-2xl">
               How Tesfa generates AI-powered health risk predictions for conflict-affected regions in East Africa.
             </p>
-           
           </div>
 
           <div className="max-w-4xl mx-auto px-8 py-8 space-y-6">
@@ -87,9 +195,9 @@ export default function MethodologyPage() {
             <Section icon={<Globe size={20} />} title="Overview">
               <p className="text-base text-primary-dark leading-relaxed mb-4">
                 Tesfa is an AI-powered proof-of-concept platform developed by Ona Insights to support NGOs, health agencies,
-                and policymakers working in conflict-affected regions of East Africa. The platform draws on a global conflict health knowledge base spanning over 105,000 document embeddings 
-from conflict-affected regions worldwide, including East Africa, the Middle East, and Central Africa,
-to generate contextually grounded health risk predictions.
+                and policymakers working in conflict-affected regions of East Africa. The platform draws on a global conflict health knowledge base spanning over 105,000 document embeddings
+                from conflict-affected regions worldwide, including East Africa, the Middle East, and Central Africa,
+                to generate contextually grounded health risk predictions.
               </p>
               <p className="text-base text-primary-dark leading-relaxed">
                 This document explains the data sources, prediction pipeline, and technical architecture underpinning
@@ -174,7 +282,7 @@ to generate contextually grounded health risk predictions.
             {/* Prediction Pipeline */}
             <Section icon={<GitBranch size={20} />} title="Prediction Pipeline">
               <p className="text-base text-primary-dark mb-6 leading-relaxed">
-                Health risk predictions are generated through a five-step pipeline combining context retrieval,
+                Health risk predictions are generated through a six-step pipeline combining context retrieval,
                 natural language processing, and structured output generation:
               </p>
               <div className="space-y-0">
@@ -201,7 +309,7 @@ to generate contextually grounded health risk predictions.
                 <PipelineStep
                   number={5}
                   title="Visualisation"
-                  description="Predictions are retrieved via the Django REST API and displayed on the Tesfa map dashboard, report page, and chat interface."
+                  description="Predictions are retrieved via the Django REST API and displayed on the Tesfa map dashboard and chat interface."
                 />
                 <PipelineStep
                   number={6}
@@ -209,6 +317,14 @@ to generate contextually grounded health risk predictions.
                   description="The AI synthesises predictions across all assessed countries and regions into a comprehensive Health Risk Analysis Report, including disease breakdowns, risk scores, regional hotspot analysis, and actionable recommendations for humanitarian intervention."
                 />
               </div>
+            </Section>
+
+            {/* Data Journey Diagram */}
+            <Section icon={<GitBranch size={20} />} title="Data Journey">
+              <p className="text-base text-primary-dark mb-6 leading-relaxed">
+                The diagram below shows how data flows from source documents through the AI pipeline to produce predictions displayed on the platform. Hover over any node for more details.
+              </p>
+              <DataJourneyDiagram />
             </Section>
 
             {/* RAG Architecture */}

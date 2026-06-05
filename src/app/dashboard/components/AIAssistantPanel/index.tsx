@@ -104,7 +104,7 @@ export default function AIAssistantPanel() {
     if (open && !greeted && messages.length === 0) {
       const greeting: Message = {
         id: uniqueId(),
-        text: "Hi, I'm Tesfa AI — I provide health risk assessments for conflict-affected regions in East Africa.",
+        text: "Hi, I'm Tesfa AI — I answer questions regarding health risk predictions in conflict regions within East Africa.",
         sender: "bot",
       };
       setMessages([greeting]);
@@ -171,7 +171,7 @@ export default function AIAssistantPanel() {
   const handleReset = () => {
     const greeting: Message = {
       id: uniqueId(),
-      text: "Hi, I'm Tesfa AI — I provide health risk assessments for conflict-affected regions in East Africa.",
+      text: "Hi, I'm Tesfa AI — I answer questions regarding health risk predictions in conflict regions within East Africa..",
       sender: "bot",
     };
     setMessages([greeting]);

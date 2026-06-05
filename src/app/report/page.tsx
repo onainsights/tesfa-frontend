@@ -334,7 +334,7 @@ export default function ReportPage() {
                   <BarChart data={avgRiskByCountry} margin={{ top: 10, right: 20, left: 0, bottom: 0 }}>
                     <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
                     <XAxis dataKey="name" tick={{ fill: '#666', fontSize: 13 }} />
-                    <YAxis domain={[0, 100]} tick={{ fill: '#666', fontSize: 13 }} />
+                    <YAxis domain={[60, 100]} tick={{ fill: '#666', fontSize: 13 }} />
                     <Tooltip formatter={(val) => [`${val}%`, 'Avg Risk Score']} />
                     <Bar dataKey="avgRisk" radius={[8, 8, 0, 0]}>
                       {avgRiskByCountry.map((entry, index) => (
