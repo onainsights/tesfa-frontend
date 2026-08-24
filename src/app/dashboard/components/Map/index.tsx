@@ -205,8 +205,12 @@ const MapClient = () => {
         <div
           className="absolute max-w-xs z-[1000] pointer-events-none bg-accent text-primary-dark p-4 rounded-xl shadow-lg"
           style={{
-            left: mousePosition.x + 10,
-            top: mousePosition.y + 10,
+             left: mousePosition.x > window.innerWidth - 320
+                ? mousePosition.x - 320
+                : mousePosition.x + 10,
+            top: mousePosition.y > window.innerHeight - 300
+                ? mousePosition.y - 290
+                : mousePosition.y + 10,
           }}
         >
           <h3 className="font-bold text-sm">

@@ -74,11 +74,11 @@ export default function AIAssistantPanel() {
   const [showSuggestions, setShowSuggestions] = useState<boolean>(false);
 
   const suggestions = [
-    "Which regions in East Africa face the highest maternal mortality risk due to conflict?",
+    "What are the health risks in Sudan?",
     "How has healthcare access deteriorated in Tigray since the war?",
     "What infectious disease outbreaks are linked to displacement camps in Somalia?",
-    "Compare malnutrition rates in active vs. post-conflict zones in South Sudan",
-    "What mental health burden is expected in northern Ethiopia over the next 5 years?",
+    "What is cholera and how does it spread in conflict zones?",
+    "What is wound infection and how can it be mitigated in conflict-affected regions?",
   ];
 
   useEffect(() => {
